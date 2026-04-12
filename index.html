@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QE Internship Logbook</title>
+
+  <style>
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+body {
+  font-family: Arial; 
+  background: linear-gradient(to right, #e3f2fd, #ffffff); 
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.site-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 30px 40px; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.logo { height: 60px; animation:fadeInUp 1s ease forwards;}
+
+.nav-menu ul { list-style: none; display: flex; gap: 30px; animation:fadeInUp 1s ease forwards;}
+.nav-menu a {
+  padding: 12px 20px; color: black; text-decoration: none; font-size: 18px;
+}
+.nav-menu a:hover { background: black; color: white; text-decoration: none; border-radius: 8px;}
+.nav-menu a.active {
+  background: black;
+  color: white;
+  border-radius: 8px;
+}
+.hero {
+  display: flex; padding: 80px; align-items: center; justify-content: space-between;animation:fadeInUp 1s ease forwards;
+}
+
+.hero-text { 
+  background: rgba(255,255,255,0.8);
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.hero-text h1 { font-size: 42px; margin-bottom: 30px; }
+.hero-text p { font-size: 18px; line-height: 1.6; padding: 10px;}
+
+.hero img { width: 450px; border-radius: 20px; animation:fadeInUp 1s ease forwards;}
+
+.cta-button {
+  display: inline-block; margin-top: 30px; padding: 14px 32px;
+  background: #007BFF; color: white; text-decoration: none; border-radius: 8px;animation:fadeInUp 1s ease forwards;
+}
+
+.cta-button:hover { background: black; }
+
+.internship-info {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.internship-info h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.info-card {
+  max-width: 800px;
+  margin: auto;
+  background: rgba(255,255,255,0.9);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.info-card p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.info-card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.info-card li {
+  margin-bottom: 8px;
+}
+
+.factors {
+  padding: 100px 40px; text-align: center;animation:fadeInUp 1s ease forwards;
+}
+
+.factors h2 {
+  font-size: 40px; margin-bottom: 40px;
+}
+
+.factors ul {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;
+  list-style: none;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.factors li {
+  position:relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.factors li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.factors img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.factors h5 { margin-top: 10px; }
+
+.tooltip {
+  position: absolute; bottom: 115%; left: 50%; transform: translateX(-50%);
+  width: 220px; background: rgba(0, 0, 0, 0.85); color: white;
+  padding: 10px; border-radius: 8px;
+  opacity: 0; visibility: hidden; transition: 0.3s;
+}
+
+.factors li:hover .tooltip { opacity: 1; visibility: visible; }
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero img {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <img src="images/logo.jpg" class="logo">
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="index.html" class="button">Home</a></li>
+      <li><a href="about me.html"class="button">About Me</a></li>
+      <li><a href="about company.html" class="button">About Company</a></li>
+      <li><a href="logbook.html" class="button">Logbook</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-text">
+    <h1>Welcome to my Internship Logbook</h1>
+    <p>This website serves as my Internship Logbook System, developed to document and present my daily activities, learning experiences, and professional development throughout my industrial training at Min Aik Technology Sdn. Bhd. The purpose of this logbook is to systematically record the tasks performed, knowledge gained, and skills developed during the internship period.</p>
+    <p>Through this platform, users can view my day-to-day progress, including exposure to real-world engineering practices, quality control processes, and production operations. This logbook not only reflects my learning journey but also demonstrates my ability to apply theoretical knowledge in a practical working environment.</p>
+    <a href="logbook.html" class="cta-button">Go to Logbook</a>
+  </div>
+</div>
+
+<section class="internship-info">
+  <h2>Internship Overview</h2>
+  <div class="info-card">
+    <p><b>Position:</b> Quality Engineering (QE) Intern</p>
+    <p><b>Duration:</b> April 2026 – July 2026</p>
+    <p><b>Company:</b> Min Aik Technology Sdn. Bhd.</p>
+    <p><b>Job Scope:</b></p>
+    <ul>
+      <li>Assist in quality control inspections</li>
+      <li>Support production line monitoring</li>
+      <li>Apply Statistical Process Control (SPC)</li>
+      <li>Analyze defects and perform root cause analysis</li>
+      <li>Learn and follow Process Control Plans</li>
+    </ul>
+  </div>
+</section>
+
+<section class="factors">
+  <h2>What I Learned During Internship (QE)</h2>
+  <ul>
+
+    <li>
+      <img src="images/spc.jpg">
+      <h5>SPC</h5>
+      <div class="tooltip">Statistical Process Control is used to monitor and control production processes using data.</div>
+    </li>
+
+    <li>
+      <img src="images/control chart.jpg">
+      <h5>Control Chart</h5>
+      <div class="tooltip">Used to identify variation with UCL, LCL, and CL to ensure process stability.</div>
+    </li>
+
+    <li>
+      <img src="images/qc.jpg">
+      <h5>In-Process QC</h5>
+      <div class="tooltip">Quality checks during production to ensure products meet specifications.</div>
+    </li>
+
+    <li>
+      <img src="images/root cause.jpg">
+      <h5>Root Cause Analysis</h5>
+      <div class="tooltip">Identify the main cause of defects using methods like 5 Why or Fishbone Diagram.</div>
+    </li>
+
+    <li>
+      <img src="images/fmea.jpg">
+      <h5>FMEA</h5>
+      <div class="tooltip">Failure Mode and Effects Analysis helps identify risks and prevent defects.</div>
+    </li>
+
+    <li>
+      <img src="images/inspection.jpg">
+      <h5>Inspection</h5>
+      <div class="tooltip">Checking product quality using measurement tools and standards.</div>
+    </li>
+
+  </ul>
+</section>
+
+
+</body>
+</html>
+
