@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Company</title>
+  <style>
+    @keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background:linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('images/companybackground.jpg');
+      background-size: cover;        /* fills area nicely */
+     background-position: center;   /* center the image */
+    background-repeat: no-repeat;  /* 🚀 prevents repeating */
+    }
+
+    header {
+      background-color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      height: 50px;
+      animation:fadeInUp 1s ease forwards;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul a {
+     padding: 12px 20px; 
+     color: black;
+    text-decoration: none; 
+    font-size: 18px;
+    animation:fadeInUp 1s ease forwards;
+    transition:0.3s;
+    }
+
+    nav ul a:hover { 
+      background: black; 
+      color: white; 
+      text-decoration: none; 
+      border-radius: 8px;
+      animation:fadeInUp 1s ease forwards;
+    }
+
+    .about-section {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      transition:transform 0.3s ease, box-shadow 0.3 ease;
+    }
+    .about-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .about-section img {
+      height: 200px;
+      border-radius: 12px;
+      width:150px;
+      height:150px;
+      object-fit: cover;
+      
+      animation: fadeInUp 1s ease forwards;
+}
+
+    .about-section h1 {
+      font-size: 32px;
+      font-weight: bold;
+       animation: fadeInUp 1s ease forwards;
+}
+
+    .about-section p {
+      font-size: 18px;
+      line-height: 1.6;
+       animation: fadeInUp 1s ease forwards;
+}
+    .about-section h2{
+      font-size: 32px;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease forwards;
+}
+    .about-section p{
+      font-size: 18px;
+      line-height:1.6;
+      animation: fadeInUp 1s ease forwards;
+      text-align: left;
+}
+
+.company-link {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f5f7fa;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images/logo.jpg" alt="Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html" class="button">Home</a></li>
+        <li><a href="about me.html" class="button">About me</a></li>
+        <li><a href="logbook.html"class="button">Logbook</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="about-section">
+    <img src="images/companyphoto.jpg" alt="company">
+    <h1>About Company</h1>
+    <p>Company Name: Min Aik Technology (M) Sdn. Bhd.</p>
+    <p>Location:  No. ST814, Jalan Masjid Tanah, Kawasan Perindustrian Masjid Tanah,78300 Alor Gajah Melaka</p>
+    <p>Established: 2000</p>
+
+   <h2>Company Overview</h2>
+   <p>Min Aik Technology (M) Sdn. Bhd. is a manufacturing and precision engineering company that provides contract manufacturing services to various industries. The company’s core activities include plastic injection molding, metal stamping, and automated assembly, which are carried out using advanced machinery and controlled production processes to ensure high efficiency and consistency.</p>
+   <p>The company produces a wide range of products, including components for hard disk drives (HDD), consumer electronics parts, and other industrial products. These products consist of high-precision metal and plastic components that require strict quality control and tight tolerance to meet customer specifications. In addition, the company is involved in sub-assembly processes, where multiple parts are assembled into semi-finished or finished products before delivery to customers.
+   <p>Furthermore, Min Aik Technology provides one-stop manufacturing solutions, covering stages from product design and development to mass production and final assembly. The company serves both local and international customers, and places strong emphasis on quality control, precision, and continuous improvement to maintain high production standards and customer satisfaction.</p> 
+   </p>
+</section>
+
+<section class="company-link">
+  <h3>More Information</h3>
+  <p>    To learn more about the company, please visit their official website.</p>
+  <a href="https://www.minaik.com.my/" target="_blank" class="btn">
+  Visit Company Website
+</a>
+</section>
+
+  
+
+</body>
+</html>
