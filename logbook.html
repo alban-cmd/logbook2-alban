@@ -381,6 +381,43 @@ document.addEventListener('DOMContentLoaded', function () {
       type:"Rest day",
       details: "Rest day."
     },
+     {
+      title: "Data Collection for Predictive Modeling",
+      date: "2026-05-04",
+      details: "Collected and identified the required KPIV and KPOV data needed for the predictive modeling project. Reviewed the available production and process data to ensure that the selected parameters are relevant for further analysis and model development."
+    },
+      {
+      title: "KPIV Data Matching Based on Production Lot",
+      date: "2026-05-05",
+      details: "Matched the KPIV data based on the production lot for each day by selecting representative row data from the lot sample data. For example, if one production lot contained multiple sample measurements, one sample row was selected randomly to represent the KPIV data for that particular lot before matching it with the corresponding KPOV data."
+    },
+     {
+      title: "Initial Modeling and Data Adjustment",
+      date: "2026-05-06",
+      details: "Attempted to perform the initial predictive modeling analysis but observed that the relationship between the KPIV and KPOV variables was relatively weak. In addition, several statistical assumptions required for the model were not fully satisfied. Began adjusting and refining the KPIV and KPOV datasets to improve data quality and model suitability."
+    },
+    {
+      title: "Refinement of Predictive Modeling Approach",
+      date: "2026-05-07",
+      details: "Continued working on the adjustment and refinement of the KPIV and KPOV data to improve the modeling results. Also explored alternative predictive models and approaches to achieve better prediction performance for the KPOV variables."
+    },
+    {
+      title: "Development of Supplier Material PDF Reader System",
+      date: "2026-05-08",
+      details: "Received a new task assignment from the supervisor to prioritize the development of a PDF reader system for extracting and saving supplier material details. The system is required urgently to support upcoming customer audit activities and improve document traceability."
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-09",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-10",
+      type:"Rest day",
+      details: "Rest day."
+    },
   ];
   function updateSummary() {
   document.getElementById("totalDays").innerText = events.length;
