@@ -15,6 +15,7 @@ body {
   margin: 0;
 }
 
+/* Header */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -22,34 +23,29 @@ body {
   padding: 25px 40px;
   background: white;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  color: white;
 }
+
 .logo { height: 60px; }
-.nav-menu ul { list-style: none; display: flex; gap: 25px; }
-.nav-menu a { padding: 10px 18px; color: black; text-decoration: none; font-size: 18px; }
-.nav-menu a:hover { background: black; color: white; border-radius: 8px; }
 
-/* Toggle */
-.view-toggle {
+.nav-menu ul {
+  list-style: none;
   display: flex;
-  justify-content: center;
-  margin: 18px auto 6px auto;
+  gap: 25px;
 }
-.toggle-btn {
-  padding: 10px 32px;
-  font-size: 15px;
-  font-weight: 600;
-  border: 2px solid #000;
-  background: white;
-  color: #000;
-  cursor: pointer;
-  transition: 0.2s;
-  letter-spacing: 0.5px;
-}
-.toggle-btn:first-child { border-radius: 8px 0 0 8px; border-right: 1px solid #000; }
-.toggle-btn:last-child  { border-radius: 0 8px 8px 0; border-left:  1px solid #000; }
-.toggle-btn.active { background: #000; color: white; }
 
-/* Summary cards */
+.nav-menu a {
+  padding: 10px 18px;
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-menu a:hover {
+  background: black;
+  color: white;
+  border-radius: 8px;
+}
 .summary-container {
   display: flex;
   justify-content: center;
@@ -57,20 +53,41 @@ body {
   margin: 15px auto 25px auto;
   flex-wrap: wrap;
 }
+
 .summary-card {
-  width: 180px; padding: 20px; border-radius: 12px;
-  color: white; text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;
+  width: 180px;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
 }
-.summary-card:hover { transform: translateY(-5px); }
-.summary-card .label { font-size: 14px; opacity: 0.9; }
-.summary-card .value { font-size: 28px; font-weight: bold; margin-top: 8px; }
-.summary-card.total { background: linear-gradient(135deg, #2196f3, #64b5f6); }
-.summary-card.work  { background: linear-gradient(135deg, #4caf50, #81c784); }
 
-h2 { text-align: center; color: #000; }
+.summary-card:hover {
+  transform: translateY(-5px);
+}
 
-/* ── DAILY VIEW ── */
+.summary-card .label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.summary-card .value {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* Colors */
+.summary-card.total {
+  background: linear-gradient(135deg, #2196f3, #64b5f6);
+}
+
+.summary-card.work {
+  background: linear-gradient(135deg, #4caf50, #81c784);
+}
+/* Layout (Dashboard style) */
 .calendar-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -78,136 +95,73 @@ h2 { text-align: center; color: #000; }
   margin: 30px auto;
   gap: 20px;
 }
+
 #calendar {
-  background: white; border-radius: 10px;
-  padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-#logDetails {
-  background: white; border-radius: 10px;
-  padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  min-height: 400px; overflow-y: auto; max-height: 620px;
-}
-#logDetails:hover { transform: translateY(-3px); transition: 0.2s; }
-.fc-daygrid-day:hover { background-color: #e3f2fd; cursor: pointer; }
-.log-date {
-  font-size: 22px; font-weight: bold; color: white;
-  background: #000; padding: 12px; border-radius: 8px;
-  text-align: center; margin-bottom: 15px;
-}
-.log-content {
-  background: #f8f9fa; border-left: 4px solid #000;
-  padding: 12px; border-radius: 6px; line-height: 1.6;
-}
-.selected-day { background-color: #bbdefb; border-radius: 6px; }
-.no-log { color: #999; font-style: italic; }
-
-/* ── WEEKLY VIEW ── */
-.week-list-container {
-  max-width: 1200px;
-  margin: 10px auto 40px auto;
-  padding: 0 20px;
-}
-
-/* Accordion card */
-.week-card {
   background: white;
-  border-radius: 12px;
-  margin-bottom: 14px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  overflow: hidden;
-  border-left: 5px solid #2196f3;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.week-card-header {
-  padding: 16px 20px;
+#logDetails {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  min-height: 400px;
+}
+
+#logDetails:hover {
+  transform: translateY(-3px);
+  transition: 0.2s;
+}
+
+/* Title */
+h2 {
+  text-align: center;
+  color: #000000;
+}
+
+/* Calendar hover */
+.fc-daygrid-day:hover {
+  background-color: #e3f2fd;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  user-select: none;
-  transition: background 0.15s;
 }
-.week-card-header:hover { background: #f0f7ff; }
 
-.week-card-header.open { background: #e3f2fd; }
-
-.week-card-left { flex: 1; }
-.week-card-title {
-  font-size: 16px; font-weight: 700; color: #000; margin-bottom: 5px;
-}
-.week-card-meta {
-  font-size: 13px; color: #666;
-  display: flex; gap: 16px; flex-wrap: wrap;
-}
-.week-chips {
-  margin-top: 8px;
-  display: flex; flex-wrap: wrap; gap: 5px;
-}
-.task-chip {
-  background: #e3f2fd; color: #1565c0;
-  font-size: 11.5px; padding: 2px 9px;
-  border-radius: 20px; font-weight: 500;
-}
-.rest-chip {
-  background: #fff3e0; color: #e65100;
-  font-size: 11.5px; padding: 2px 9px;
-  border-radius: 20px; font-weight: 500;
-}
-.chevron {
-  font-size: 18px; color: #666;
-  transition: transform 0.25s;
-  margin-left: 12px;
-}
-.chevron.open { transform: rotate(180deg); }
-
-/* Accordion body */
-.week-card-body {
-  display: none;
-  padding: 14px 18px 18px 18px;
-  border-top: 1px solid #e0e0e0;
-  animation: fadeIn 0.2s ease;
-}
-.week-card-body.open { display: block; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; } }
-
-.week-day-entry {
-  margin-bottom: 12px;
+/* Right panel */
+.log-date {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background: #000000;
+  padding: 12px;
   border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
-}
-.week-day-title {
-  font-weight: 700; font-size: 13.5px;
-  background: #e3f2fd; color: #1565c0;
-  padding: 7px 12px;
-  border-left: 4px solid #2196f3;
-  display: flex; align-items: center; gap: 8px;
-}
-.work-badge {
-  font-size: 10.5px; background: #2196f3; color: white;
-  border-radius: 4px; padding: 1px 7px; white-space: nowrap;
-}
-.week-day-detail {
-  background: #f8f9fa; border-left: 4px solid #90caf9;
-  padding: 9px 12px; font-size: 13.5px;
-  line-height: 1.6; color: #333;
-}
-.rest-day-row {
-  background: #fff3e0; border-left: 4px solid #ff9800;
-  padding: 8px 12px; border-radius: 6px;
-  color: #e65100; font-size: 13px; font-weight: 600;
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-/* hidden */
-#weeklyView { display: none; }
+.log-content {
+  background: #f8f9fa;
+  border-left: 4px solid #000000;
+  padding: 12px;
+  border-radius: 6px;
+  line-height: 1.6;
+}
 
+.selected-day {
+  background-color: #bbdefb ;
+  border-radius: 6px;
+}
+
+/* Responsive */
 @media (max-width: 900px) {
-  .calendar-container { grid-template-columns: 1fr; }
+  .calendar-container {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header class="site-header">
@@ -224,297 +178,461 @@ h2 { text-align: center; color: #000; }
 <section>
   <h2>Internship Logbook</h2>
 
-  <div class="view-toggle">
-    <button class="toggle-btn active" id="btnDaily"  onclick="switchView('daily')">📅 Daily Report</button>
-    <button class="toggle-btn"        id="btnWeekly" onclick="switchView('weekly')">📋 Weekly Report</button>
-  </div>
-
   <div class="summary-container">
     <div class="summary-card total">
       <div class="label">Total Days</div>
       <div class="value" id="totalDays"></div>
     </div>
+
     <div class="summary-card work">
       <div class="label">Work Days</div>
       <div class="value" id="workDays"></div>
     </div>
   </div>
 
-  <!-- Daily View -->
-  <div id="dailyView">
-    <div class="calendar-container">
-      <div id="calendar"></div>
-      <div id="logDetails">Click a date or use ← → keys.</div>
-    </div>
-  </div>
-
-  <!-- Weekly View -->
-  <div id="weeklyView">
-    <div class="week-list-container" id="weekListContainer"></div>
+  <div class="calendar-container">
+    <div id="calendar"></div>
+    <div id="logDetails">Click a date or use ← → keys.</div>
   </div>
 </section>
 
+
 <script>
-let selectedDateStr = null;
-let currentMode = 'daily';
-
-const events = [
-  { title: "Report for duty & HR briefing", date: "2026-04-01", details: "I reported for duty at Min Aik Technology Sdn. Bhd. Upon arrival, I registered my fingerprints for daily access and attended a company briefing conducted by the Human Resource Department. During the session, I became familiar with the company's workflow and operational processes, including an introduction to Statistical Process Control (SPC)." },
-  { title: "Exposure to Quality Control Procedures", date: "2026-04-02", details: "I accompanied my supervisor to the quality control sections of each production line, where I observed inspection procedures and gained insight into quality monitoring practices." },
-  { title: "Understanding Process Control Plan", date: "2026-04-03", details: "I revisited the production lines with my supervisor and was introduced to the Process Control Plan, which outlines methods used to maintain and improve product quality." },
-  { title: "Rest day", date: "2026-04-04", type: "Rest day", details: "Rest day." },
-  { title: "Rest day", date: "2026-04-05", type: "Rest day", details: "Rest day." },
-  { title: "Project Assignment and Requirement Understanding", date: "2026-04-06", details: "On this day, I was assigned by my supervisor to develop a file checker system aimed at automating the validation of Excel-based reports such as OQA reports and Smartsheet data. I focused on understanding the project requirements, including the types of files involved, their structures, and the key validation rules such as lot number conditions, inspection types, and data completeness. I also identified the expected output of the system, which includes detecting errors and generating validation results." },
-  { title: "System Logic Design and Production Flow Exposure", date: "2026-04-07", details: "I began designing the system logic using Python. This involved planning how to read Excel files using libraries such as Pandas, identifying relevant sheets, and structuring the program into functions. My supervisor also brought me to observe the production flow, where I learned about the overall manufacturing process and quality control procedures." },
-  { title: "Development of Core Validation Functions", date: "2026-04-08", details: "I continued developing the program by implementing the core validation functions — verifying lot number thresholds, inspection requirements, and whether all required data fields were properly filled. I also improved robustness by handling missing sheets or inconsistent column names." },
-  { title: "Web Interface Design and Development", date: "2026-04-09", details: "I started developing a web-based interface using HTML and CSS to improve system usability. Users can upload files and view validation results through a webpage instead of running the program manually." },
-  { title: "Integration of Frontend and Backend Systems", date: "2026-04-10", details: "I focused on integrating the web interface with the backend Python logic using Flask. This involved handling file uploads, passing them to the validation program, and returning results to the UI with meaningful feedback messages." },
-  { title: "Rest day", date: "2026-04-11", type: "Rest day", details: "Rest day." },
-  { title: "Rest day", date: "2026-04-12", type: "Rest day", details: "Rest day." },
-  { title: "Development of Automated File Checker Program", date: "2026-04-13", details: "Continued development of the automated file checker program by improving coding logic for file validation and error detection. Performed debugging and preliminary functional testing to evaluate system performance and accuracy." },
-  { title: "Program Optimization and Functional Verification", date: "2026-04-14", details: "Continued coding and optimization of the automated file checker system. Worked on refining checking algorithms, improving program flow, and resolving issues identified during testing." },
-  { title: "File Checker Development and SPC Review", date: "2026-04-15", details: "Continued development of the automated file checker. Attended the weekly engineering meeting involving Statistical Process Control (SPC) analysis, where process capability, control chart trends, and variation analysis were reviewed." },
-  { title: "Debugging and Improvement of Automation Workflow", date: "2026-04-16", details: "Continued coding and debugging activities for the automated file checker project. Focused on improving system functionality, correcting logic errors, and strengthening the automation workflow." },
-  { title: "Project Documentation and Presentation Preparation", date: "2026-04-17", details: "Continued development of the automated file checker while preparing PowerPoint presentation slides for project progress review, covering objectives, methodology, and current development status." },
-  { title: "Rest day", date: "2026-04-18", type: "Rest day", details: "Rest day." },
-  { title: "Rest day", date: "2026-04-19", type: "Rest day", details: "Rest day." },
-  { title: "System Development and Improvement", date: "2026-04-20", details: "Continued development of the automated file checker program with focus on improving coding logic and enhancing system functionality." },
-  { title: "Enhancement of Automation Program", date: "2026-04-21", details: "Continued coding and refinement of the file checker system. Worked on optimizing program performance and improving data verification reliability." },
-  { title: "Continued Debugging and Logic Strengthening", date: "2026-04-22", details: "Continued development with emphasis on debugging and strengthening program logic to ensure consistent and accurate checks based on predefined validation rules." },
-  { title: "System Improvement and Presentation Preparation", date: "2026-04-23", details: "Continued enhancing the automated file checker while preparing presentation materials, organizing key points on system functionality, progress, and expected benefits." },
-  { title: "SPC Calculation and Data Analysis Using Excel", date: "2026-04-24", details: "Performed Statistical Process Control (SPC) analysis for the product by calculating control charts for each dimension using Excel. Applied X-bar and R chart formulas to evaluate process stability and variation." },
-  { title: "Rest day", date: "2026-04-25", type: "Rest day", details: "Rest day." },
-  { title: "Rest day", date: "2026-04-26", type: "Rest day", details: "Rest day." },
-  { title: "Final System Debugging and Presentation Preparation", date: "2026-04-27", details: "Conducted final debugging and system validation for the automated file checker prior to project presentation. Prepared and finalized presentation slides summarizing project objectives, system workflow, and key outcomes." },
-  { title: "Project Presentation and New Task Assignment", date: "2026-04-28", details: "Presented the automated file checker project to the QE Director. Received feedback and was assigned a new project to develop a predictive model analyzing the relationship between KPIVs and KPOVs for the VCM product." },
-  { title: "Process Understanding and Project Familiarization", date: "2026-04-29", details: "Studied and analyzed the process flow of the VCM product to support predictive model development. Referred to documentation and past projects to understand relevant KPIVs, KPOVs, and data structure." },
-  { title: "Data Collection for Predictive Modeling", date: "2026-04-30", details: "Initiated the predictive modeling task by collecting relevant process and quality data. Identified required variables and began organizing datasets for further analysis and model development." },
-  { title: "Public Holiday (Labour Day)", date: "2026-05-01", type: "Rest day", details: "Public Holiday (Labour Day)" },
-  { title: "Rest day", date: "2026-05-02", type: "Rest day", details: "Rest day." },
-  { title: "Rest day", date: "2026-05-03", type: "Rest day", details: "Rest day." },
-  { title: "Data Collection for Predictive Modeling", date: "2026-05-04", details: "Collected and identified the required KPIV and KPOV data for the predictive modeling project. Reviewed production data to ensure selected parameters are relevant for further analysis." },
-  { title: "KPIV Data Matching Based on Production Lot", date: "2026-05-05", details: "Matched the KPIV data based on production lot by selecting a representative sample row for each lot before matching it with the corresponding KPOV data." },
-  { title: "Initial Modeling and Data Adjustment", date: "2026-05-06", details: "Attempted initial predictive modeling analysis but observed weak relationships between KPIV and KPOV variables. Began adjusting and refining datasets to improve data quality and model suitability." },
-  { title: "Refinement of Predictive Modeling Approach", date: "2026-05-07", details: "Continued adjusting and refining KPIV and KPOV data to improve modeling results. Also explored alternative predictive models and approaches for better prediction performance." },
-  { title: "Development of Supplier Material PDF Reader System", date: "2026-05-08", details: "Received a new urgent task to develop a PDF reader system for extracting and saving supplier material details, to support upcoming customer audit activities and improve document traceability." },
-  { title: "Rest day", date: "2026-05-09", type: "Rest day", details: "Rest day." },
-  { title: "Rest day", date: "2026-05-10", type: "Rest day", details: "Rest day." },
-  { title: "Continued Development of PDF Reader System", date: "2026-05-11", details: "Continued developing the PDF reader system. Focused on improving system workflow, data extraction accuracy, and file handling to support document management for audit preparation." },
-  { title: "Discussion on Predictive Modeling Issues", date: "2026-05-12", details: "Had a discussion with the manager on issues in the predictive modeling project. Reviewed results, identified possible causes of weak performance, and discussed potential improvement approaches." },
-  { title: "Improvement of Predictive Modeling", date: "2026-05-13", details: "Continued improving the predictive modeling project by refining the dataset and testing different modeling approaches to enhance KPIV–KPOV prediction performance." },
-  { title: "Assignment of New Daily Working Record System Project", date: "2026-05-14", details: "Received a new project from the manager to develop a simple daily working record system. Started understanding requirements and planning the basic structure and functions needed." },
-  { title: "System Adjustments and New Data Collection Proposal", date: "2026-05-15", details: "Made further adjustments to both the PDF reader system and the daily working record system. Also began preparing a proposal for collecting new KPIV and KPOV data due to limitations in the existing dataset." },
-  { title: "Rest day", date: "2026-05-16", type: "Rest day", details: "Rest day." },
-  { title: "Rest day", date: "2026-05-17", type: "Rest day", details: "Rest day." },
-  { title: "Preparation of Data Collection Proposal", date: "2026-05-18", details: "Started preparing the proposal for collecting new KPIV and KPOV data. Identified current dataset limitations and outlined objectives, methodology, and data requirements for the new collection process." },
-  { title: "Adjustment of Daily Working Record System", date: "2026-05-19", details: "Made several adjustments to the daily working record system to enhance usability and functionality. Refined the data recording process and improved interface flow." },
-  { title: "Discussion on Data Collection Strategy", date: "2026-05-20", details: "Had a discussion with the Quality Director on data collection methods. She suggested collecting KPIV data from five production lots instead of one to improve dataset quality and model reliability." },
-  { title: "Finalization of Data Collection Proposal", date: "2026-05-21", details: "Finalized the proposal for new KPIV and KPOV data collection. Reviewed and organized content including problem statement, objectives, methodology, and proposed sampling approach." },
-  { title: "System Adjustment and Predictive Model Exploration", date: "2026-05-22", details: "Made minor adjustments to the daily working record system. Continued exploring suitable predictive modeling approaches that can accurately predict KPOV output based on KPIV variables." },
-  { title: "Rest day", date: "2026-05-23", type: "Rest day", details: "Rest day." },
-  { title: "Rest day", date: "2026-05-24", type: "Rest day", details: "Rest day." },
-  { title: "Exploration of Suitable Predictive Modeling Methods", date: "2026-05-25", details: "Continued evaluating suitable predictive modeling methods. Focused on comparing machine learning and regression approaches to identify models with better prediction capability and dataset compatibility." },
-  { title: "Confirmation of Modeling Approach and Proposal Discussion", date: "2026-05-26", details: "Confirmed the selected predictive modeling approaches: Support Vector Regression (SVR) and Gaussian Process Regression (GPR). Discussed the data collection proposal with the Quality Manager, who suggested further coordination with the Production Department." },
-  { title: "Public Holiday (Hari Raya Haji)", date: "2026-05-27", type: "Rest day", details: "Public Holiday (Hari Raya Haji)" },
-];
-
-// ── Fix: parse date parts directly to avoid timezone shift ───────────────
-function parseDateParts(dateStr) {
-  const [y, m, d] = dateStr.split('-').map(Number);
-  return { y, m, d };
-}
-
-function formatDate(dateStr) {
-  const { y, m, d } = parseDateParts(dateStr);
-  const months = ['January','February','March','April','May','June',
-                  'July','August','September','October','November','December'];
-  return `${d} ${months[m-1]} ${y}`;
-}
-
-// Get Monday of the week (no timezone issues — pure arithmetic)
-function getMonday(dateStr) {
-  const { y, m, d } = parseDateParts(dateStr);
-  const tmp = new Date(y, m - 1, d);          // local midnight, safe
-  const dow = tmp.getDay();                    // 0=Sun
-  const diff = dow === 0 ? -6 : 1 - dow;
-  tmp.setDate(tmp.getDate() + diff);
-  return `${tmp.getFullYear()}-${String(tmp.getMonth()+1).padStart(2,'0')}-${String(tmp.getDate()).padStart(2,'0')}`;
-}
-
-function getSunday(mondayStr) {
-  const { y, m, d } = parseDateParts(mondayStr);
-  const tmp = new Date(y, m - 1, d + 6);
-  return `${tmp.getFullYear()}-${String(tmp.getMonth()+1).padStart(2,'0')}-${String(tmp.getDate()).padStart(2,'0')}`;
-}
-
-function groupByWeek() {
-  const weeks = {};
-  events.forEach(ev => {
-    const mon = getMonday(ev.date);
-    if (!weeks[mon]) weeks[mon] = [];
-    weeks[mon].push(ev);
-  });
-  Object.keys(weeks).forEach(k => weeks[k].sort((a, b) => a.date.localeCompare(b.date)));
-  return weeks;
-}
-
-// ── Summary ───────────────────────────────────────────────────────────────
-document.getElementById("totalDays").innerText = events.length;
-document.getElementById("workDays").innerText  = events.filter(e => e.type !== "Rest day").length;
-
-// ── View toggle ───────────────────────────────────────────────────────────
-function switchView(mode) {
-  currentMode = mode;
-  document.getElementById('dailyView').style.display  = mode === 'daily'  ? '' : 'none';
-  document.getElementById('weeklyView').style.display = mode === 'weekly' ? '' : 'none';
-  document.getElementById('btnDaily').classList.toggle('active',  mode === 'daily');
-  document.getElementById('btnWeekly').classList.toggle('active', mode === 'weekly');
-  if (mode === 'weekly') renderWeeklyList();
-}
-
-// ── Weekly accordion ──────────────────────────────────────────────────────
-function renderWeeklyList() {
-  const container = document.getElementById('weekListContainer');
-  const weeks     = groupByWeek();
-  const sortedKeys = Object.keys(weeks).sort();
-  let html = '';
-
-  sortedKeys.forEach((mon, idx) => {
-    const weekNum    = idx + 1;
-    const sun        = getSunday(mon);
-    const entries    = weeks[mon];
-    const workEntries = entries.filter(e => e.type !== 'Rest day');
-    const restEntries = entries.filter(e => e.type === 'Rest day');
-
-    // chips for the collapsed header
-    const taskChips = workEntries.map(e => `<span class="task-chip">${e.title}</span>`).join('');
-    const restChips = restEntries.map(e => `<span class="rest-chip">🛌 ${e.title}</span>`).join('');
-
-    // detail rows
-    let detailHTML = '';
-    entries.forEach(ev => {
-      if (ev.type === 'Rest day') {
-        detailHTML += `<div class="rest-day-row">🛌 ${formatDate(ev.date)} — ${ev.title}</div>`;
-      } else {
-        detailHTML += `
-          <div class="week-day-entry">
-            <div class="week-day-title">
-              <span>${formatDate(ev.date)}</span>
-              <span class="work-badge">Work Day</span>
-              <span style="color:#333;font-weight:600;">${ev.title}</span>
-            </div>
-            <div class="week-day-detail">${ev.details}</div>
-          </div>`;
-      }
-    });
-
-    html += `
-      <div class="week-card" id="wcard-${mon}">
-        <div class="week-card-header" onclick="toggleWeek('${mon}')">
-          <div class="week-card-left">
-            <div class="week-card-title">Week ${weekNum} &nbsp;·&nbsp; ${formatDate(mon)} – ${formatDate(sun)}</div>
-            <div class="week-card-meta">
-              <span>💼 ${workEntries.length} work day${workEntries.length !== 1 ? 's' : ''}</span>
-              <span>🛌 ${restEntries.length} rest day${restEntries.length !== 1 ? 's' : ''}</span>
-            </div>
-            <div class="week-chips">${taskChips}${restChips}</div>
-          </div>
-          <span class="chevron" id="chev-${mon}">▾</span>
-        </div>
-        <div class="week-card-body" id="wbody-${mon}">
-          ${detailHTML}
-        </div>
-      </div>`;
-  });
-
-  container.innerHTML = html;
-
-  // Auto-open the first week
-  if (sortedKeys.length > 0) toggleWeek(sortedKeys[0]);
-}
-
-function toggleWeek(mon) {
-  const body  = document.getElementById('wbody-' + mon);
-  const chev  = document.getElementById('chev-'  + mon);
-  const header = body.previousElementSibling;
-  const isOpen = body.classList.contains('open');
-  body.classList.toggle('open',  !isOpen);
-  chev.classList.toggle('open',  !isOpen);
-  header.classList.toggle('open',!isOpen);
-}
-
-// ── Daily / Calendar ──────────────────────────────────────────────────────
+let selectedDateStr=null;
 document.addEventListener('DOMContentLoaded', function () {
-  const calendarEl  = document.getElementById('calendar');
-  let currentDate   = new Date(2026, 3, 1);   // April 1 — local, no TZ issue
 
-  function toDateStr(d) {
-    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  var calendarEl = document.getElementById('calendar');
+
+  var events = [
+    {
+      title: "Report for duty & HR briefing",
+      date: "2026-04-01",
+      details: "I reported for duty at Min Aik Technology Sdn. Bhd. Upon arrival, I registered my fingerprints for daily access and attended a company briefing conducted by the Human Resource Department. During the session, I became familiar with the company’s workflow and operational processes, including an introduction to Statistical Process Control (SPC)."
+    },
+    {
+      title: "Exposure to Quality Control Procedures",
+      date: "2026-04-02",
+      details: "I accompanied my supervisor to the quality control sections of each production line, where I observed inspection procedures and gained insight into quality monitoring practices."
+    },
+    {
+      title: "Understanding Process Control Plan",
+      date: "2026-04-03",
+      details: "I revisited the production lines with my supervisor and was introduced to the Process Control Plan, which outlines methods used to maintain and improve product quality."
+    },
+    {
+      title: "Rest day",
+      date: "2026-04-04",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Rest day",
+      date: "2026-04-05",
+      type:"Rest day",
+      details: "Rest day."
+    },
+
+    {
+      title: "Project Assignment and Requirement Understanding",
+      date: "2026-04-06",
+      details: "On this day, I was assigned by my supervisor to develop a file checker system aimed at automating the validation of Excel-based reports such as OQA reports and Smartsheet data. I focused on understanding the project requirements, including the types of files involved, their structures, and the key validation rules such as lot number conditions, inspection types, and data completeness. I also identified the expected output of the system, which includes detecting errors and generating validation results. This initial stage helped me understand the importance of data accuracy in quality control processes and laid a strong foundation for further development."
+    },
+    {
+      title: "System Logic Design and Production Flow Exposure",
+      date: "2026-04-07",
+      details: "On this day, I began designing the system logic using Python. This involved planning how to read Excel files using libraries such as Pandas, identifying relevant sheets such as the Supplier Cover Sheet and Critical Parameter Data, and structuring the program into functions to ensure better organization and scalability. In addition, my supervisor brought me to observe the production flow, where I learned about the overall manufacturing process, quality control procedures at different stages, and the importance of accurate data recording. This exposure provided valuable practical insight and helped me align the system design with real industrial applications."
+    },
+    {
+      title: "Development of Core Validation Functions",
+      date: "2026-04-08",
+      details: "On this day, I continued developing the program by implementing the core validation functions. I worked on writing logic to verify conditions such as lot number thresholds and inspection requirements, as well as checking whether all required data fields were properly filled. I also handled variations in file structure and formatting to ensure the program could function reliably. Furthermore, I improved the robustness of the system by addressing potential errors such as missing sheets or inconsistent column names, which enhanced my problem-solving skills."
+    },
+    {
+      title: "Web Interface Design and Development",
+      date: "2026-04-09",
+      details: "On this day, I started developing a web-based interface to improve the usability of the system. Instead of running the Python program manually, users can interact with the system through a webpage. I designed the layout using HTML and CSS, planned the user workflow from file upload to result display, and ensured that the interface presents validation results clearly and effectively. This phase introduced me to frontend development and improved my understanding of user-centered design."
+    },
+    {
+      title: "Integration of Frontend and Backend Systems",
+      date: "2026-04-10",
+      details: "On this day, I focused on integrating the web interface with the backend Python logic using a framework such as Flask. This involved handling file uploads from the webpage, passing the uploaded files to the validation program, and returning the results to the user interface. I also ensured that the system provides meaningful feedback, such as error messages when validation fails and confirmation messages when all requirements are met. This integration process enhanced my understanding of full-stack development and how different components interact in real-world applications."
+    },
+    {
+      title: "Rest day",
+      date: "2026-04-11",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Rest day",
+      date: "2026-04-12",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Development of Automated File Checker Program",
+      date: "2026-04-13",
+      details: "Continued development of the automated file checker program by improving coding logic for file validation and error detection. Focused on enhancing the program’s capability to verify data consistency, identify discrepancies, and support automation of manual file checking processes. Performed debugging and preliminary functional testing to evaluate system performance and accuracy."
+    },
+    {
+      title: "Program Optimization and Functional Verification",
+      date: "2026-04-14",
+      details: "Continued coding and optimization of the automated file checker system. Worked on refining checking algorithms, improving program flow, and resolving issues identified during testing. Conducted additional verification to ensure the system could reliably detect missing or mismatched information and improve the robustness of the automation process."
+    },
+    {
+      title: "File Checker Development and Statistical Process Control (SPC) Review",
+      date: "2026-04-15",
+      details: "Continued development of the automated file checker program, focusing on improving validation functions and overall system reliability. Attended the weekly engineering meeting involving Statistical Process Control (SPC) analysis for product monitoring, where process capability, control chart trends, and variation analysis were reviewed. Gained exposure to the application of SPC tools in quality monitoring and process improvement activities."
+    },
+    {
+      title: "Debugging and Improvement of Automation Workflow",
+      date: "2026-04-16",
+      details: "Continued coding and debugging activities for the automated file checker project. Focused on improving system functionality, correcting logic errors, and strengthening the automation workflow to enhance efficiency and reduce manual verification effort. Performed testing to validate program outputs against expected checking criteria."
+    },
+    {
+      title: "Project Documentation and Presentation Preparation",
+      date: "2026-04-17",
+      details: "Continued development of the automated file checker while preparing PowerPoint presentation slides for project progress review. Compiled project background, objectives, methodology, current development status, and anticipated benefits of the automation system. Prepared presentation materials to communicate project progress and technical findings effectively to supervisors and team members."
+    },
+    {
+      title: "Rest day",
+      date: "2026-04-18",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Rest day",
+      date: "2026-04-19",
+      type:"Rest day",
+      details: "Rest day."
+    },
+      {
+      title: "System Development and Improvement",
+      date: "2026-04-20",
+      details: "Continued development of the automated file checker program with focus on improving coding logic and enhancing system functionality. Made incremental improvements to the validation process to increase accuracy and reduce potential errors during file checking."
+    },
+      {
+      title: "Enhancement of Automation Program",
+      date: "2026-04-21",
+      details: "Continued coding and refinement of the file checker system. Worked on optimizing program performance and improving the reliability of data verification by addressing issues identified during testing."
+    },
+      {
+      title: "Project Documentation and Presentation Preparation",
+      date: "2026-04-22",
+      details: "Continued development of the automation system with emphasis on debugging and strengthening program logic. Ensured that the system performs consistent and accurate checks based on predefined validation rules."
+    },
+      {
+      title: "System Improvement and Presentation Preparation",
+      date: "2026-04-23",
+      details: "Continued enhancing the automated file checker while preparing presentation materials for the project. Organized key points including system functionality, development progress, and expected benefits for effective communication during the presentation."
+    },
+      {
+      title: "SPC Calculation and Data Analysis Using Excel",
+      date: "2026-04-24",
+      details: "Performed Statistical Process Control (SPC) analysis for the product by calculating control charts for each dimension using Excel. Applied X-bar and R chart formulas to evaluate process stability and variation, supporting quality monitoring and analysis."
+    },
+     {
+      title: "Rest day",
+      date: "2026-04-25",
+      type:"Rest day",
+      details: "Rest day."
+    }, {
+      title: "Rest day",
+      date: "2026-04-26",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Final System Debugging and Presentation Preparation",
+      date: "2026-04-27",
+      details: "Conducted final debugging and system validation for the automated file checker prior to project presentation. Ensured all functionalities were working as expected and resolved remaining issues. Prepared and finalized presentation slides, summarizing project objectives, system workflow, and key outcomes for review by the QE Director."
+    },
+    {
+      title: "Project Presentation and New Task Assignment",
+      date: "2026-04-28",
+      details: "Presented the automated file checker project to the QE Director, explaining the system design, implementation, and benefits. Received feedback during the session, and was assigned a new project to develop a predictive model analyzing the relationship between Key Process Input Variables (KPIV) and Key Process Output Variables (KPOV) for the VCM product."
+    },
+    
+    {
+      title: "Process Understanding and Project Familiarization",
+      date: "2026-04-29",
+      details: "Studied and analyzed the process flow of the VCM product to support the development of the predictive model. Referred to documentation and past projects to gain a better understanding of relevant KPIVs and KPOVs, as well as the overall manufacturing process and data structure."
+    },
+     {
+      title: "Data Collection for Predictive Modeling",
+      date: "2026-04-30",
+      details: "Initiated the predictive modeling task by collecting relevant process and quality data. Identified required variables and began organizing datasets to support further analysis and model development. Focused on ensuring data completeness and suitability for modeling purposes."
+    },
+     {
+      title: "Public holiday (labour day)",
+      date: "2026-05-01",
+      type:"Rest day",
+      details: "Public holiday (labour day)"
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-02",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-03",
+      type:"Rest day",
+      details: "Rest day."
+    },
+     {
+      title: "Data Collection for Predictive Modeling",
+      date: "2026-05-04",
+      details: "Collected and identified the required KPIV and KPOV data needed for the predictive modeling project. Reviewed the available production and process data to ensure that the selected parameters are relevant for further analysis and model development."
+    },
+      {
+      title: "KPIV Data Matching Based on Production Lot",
+      date: "2026-05-05",
+      details: "Matched the KPIV data based on the production lot for each day by selecting representative row data from the lot sample data. For example, if one production lot contained multiple sample measurements, one sample row was selected randomly to represent the KPIV data for that particular lot before matching it with the corresponding KPOV data."
+    },
+     {
+      title: "Initial Modeling and Data Adjustment",
+      date: "2026-05-06",
+      details: "Attempted to perform the initial predictive modeling analysis but observed that the relationship between the KPIV and KPOV variables was relatively weak. In addition, several statistical assumptions required for the model were not fully satisfied. Began adjusting and refining the KPIV and KPOV datasets to improve data quality and model suitability."
+    },
+    {
+      title: "Refinement of Predictive Modeling Approach",
+      date: "2026-05-07",
+      details: "Continued working on the adjustment and refinement of the KPIV and KPOV data to improve the modeling results. Also explored alternative predictive models and approaches to achieve better prediction performance for the KPOV variables."
+    },
+    {
+      title: "Development of Supplier Material PDF Reader System",
+      date: "2026-05-08",
+      details: "Received a new task assignment from the supervisor to prioritize the development of a PDF reader system for extracting and saving supplier material details. The system is required urgently to support upcoming customer audit activities and improve document traceability."
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-09",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-10",
+      type:"Rest day",
+      details: "Rest day."
+    },
+
+     {
+      title: "Continued Development of PDF Reader System",
+      date: "2026-05-11",
+      details: "Continued developing the PDF reader system for extracting and storing supplier material details. Focused on improving the system workflow, data extraction accuracy, and file handling process to support document management for audit preparation."     
+    },
+    
+     {
+      title: "Discussion on Predictive Modeling Issues",
+      date: "2026-05-12",
+      details: "Had a discussion session with the manager regarding the issues faced in the predictive modeling project. Reviewed the current modeling results, identified possible causes of weak prediction performance, and discussed potential solutions and improvement approaches."
+    },
+     {
+      title: "Improvement of Predictive Modeling",
+      date: "2026-05-13",
+      details: "Continued working on improving the predictive modeling project by refining the dataset and testing different modeling approaches. Focused on enhancing the relationship between KPIV and KPOV variables and improving the overall prediction performance."
+    },
+     {
+      title: "Assignment of New Daily Working Record System Project",
+      date: "2026-05-14",
+      details: "Received a new project assignment from the manager to develop a simple daily working record system. Started understanding the project requirements and planning the basic structure and functions needed for the system."
+    },
+    
+     {
+      title: "System Adjustments and Preparation of New Data Collection Proposal",
+      date: "2026-05-15",
+      details: "Made further adjustments and improvements to both the PDF reader system and the daily working record system. At the same time, began preparing a proposal for collecting new KPIV and KPOV data due to the unresolved issues encountered in the predictive modeling project and the limitations of the existing dataset."
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-16",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-17",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+    title: "Preparation of Data Collection Proposal",
+      date: "2026-05-18",
+      details: "Started preparing the proposal for collecting new KPIV and KPOV data to support the predictive modeling project. Focused on identifying the current limitations of the existing dataset and outlining the objectives, methodology, and data requirements for the new data collection process."
+    },
+    {
+      title: "Adjustment of Daily Working Record System",
+      date: "2026-05-19",
+      details: "Made several adjustments and improvements to the daily working record system to enhance usability and system functionality. Refined the data recording process and improved the interface flow for easier daily usage."
+    },
+    {
+      title: "Discussion on Data Collection Strategy for Predictive Modeling",
+      date: "2026-05-20",
+      details: "Had a discussion session with the Quality Director regarding the data collection method for developing the predictive modeling project. She suggested collecting KPIV data from five different production lots instead of only one lot to improve the dataset quality, increase variability representation, and enhance the reliability of the predictive model."
+    },
+  {
+      title: "Finalization of Data Collection Proposal",
+      date: "2026-05-21",
+      details: "Finalized the proposal for the new KPIV and KPOV data collection process. Reviewed and organized the proposal content, including the problem statement, objectives, methodology, and proposed sampling approach for future predictive modeling development."
+    },
+    {
+      title: "System Adjustment and Predictive Model Exploration",
+      date: "2026-05-22",
+      details: "Made minor adjustments to the daily working record system to further improve its functionality and user experience. At the same time, continued exploring and identifying suitable predictive modeling approaches that can accurately predict KPOV output based on the given KPIV variables."
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-23",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Rest day",
+      date: "2026-05-24",
+      type:"Rest day",
+      details: "Rest day."
+    },
+    {
+      title: "Exploration of Suitable Predictive Modeling Methods",
+      date: "2026-05-25",
+      details: "Continued exploring and evaluating suitable predictive modeling methods that can accurately predict the KPOV output based on the available KPIV data. Focused on comparing different machine learning and regression approaches to identify models with better prediction capability and compatibility with the dataset."
+    },
+     {
+      title: "Confirmation of Predictive Modeling Approach and Proposal Discussion",
+      date: "2026-05-26",
+      details: "Confirmed the concept and workflow for the selected predictive modeling approaches, which are Support Vector Regression (SVR) and Gaussian Process Regression (GPR). Studied the implementation flow and understanding of both models for predicting KPOV output based on KPIV input variables. In addition, discussed the proposal for collecting new predictive modeling data with the Quality Manager, who suggested further discussion and coordination with the Production Department regarding the data collection process and feasibility."
+    },
+    {
+      title: "Public Holiday (Hari Raya Haji)",
+      date: "2026-05-27",
+      type:"Rest day",
+      details: "Public Holiday (Hari Raya Haji)"
+    },
+  ];
+  function updateSummary() {
+  document.getElementById("totalDays").innerText = events.length;
+  document.getElementById("workDays").innerText =
+    events.filter(e => e.type !== "Rest day").length;
+}
+  updateSummary();
+
+  let currentDate = new Date("2026-04-01");
+
+  // Format date nicely
+  function formatDate(dateStr) {
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    return new Date(dateStr).toLocaleDateString('en-GB', options);
   }
 
+  // Update log panel
   function updateLog(dateStr) {
-    const logDiv = document.getElementById('logDetails');
-    const ev     = events.find(e => e.date === dateStr);
-    if (ev) {
+    let logDiv = document.getElementById('logDetails');
+    let event = events.find(e => e.date === dateStr);
+
+    if (event) {
       logDiv.innerHTML = `
         <div class="log-date">${formatDate(dateStr)}</div>
-        <div class="log-content">${ev.details}</div>`;
+        <div class="log-content">${event.details}</div>
+      `;
     } else {
       logDiv.innerHTML = `
         <div class="log-date">${formatDate(dateStr)}</div>
-        <div class="log-content no-log">📌 No log entry recorded for this date.</div>`;
+        <div class="log-content">📌 No log entry recorded for this date.</div>
+      `;
     }
   }
 
-  const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView:  'dayGridMonth',
-    initialDate:  '2026-04-01',
-    validRange:   { start: '2026-04-01', end: '2026-08-01' },
-    headerToolbar: { left: 'prev,next', center: 'title', right: '' },
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    initialDate: '2026-04-01',
+
+    validRange: {
+      start: '2026-04-01',
+      end: '2026-08-01'
+    },
+
+    headerToolbar: {
+      left: 'prev,next',
+      center: 'title',
+      right: ''
+    },
+
     events: events,
 
     dateClick: function(info) {
-      currentDate    = new Date(info.date.getFullYear(), info.date.getMonth(), info.date.getDate());
-      selectedDateStr = toDateStr(currentDate);
-      updateLog(selectedDateStr);
-      calendar.render();
-    },
+   currentDate = new Date(info.dateStr);
+  selectedDateStr = info.dateStr;
+  updateLog(info.dateStr);
+  calendar.refetchEvents(); // optional
+  calendar.render(); // refresh to apply highlight
+},
+  eventClick: function(info) {
+    info.jsEvent.preventDefault(); // prevent default popup
 
-    eventClick: function(info) {
-      info.jsEvent.preventDefault();
-      const d = info.event.start;
-      currentDate     = new Date(d.getFullYear(), d.getMonth(), d.getDate());
-      selectedDateStr = toDateStr(currentDate);
-      updateLog(selectedDateStr);
-      calendar.gotoDate(selectedDateStr);
-      calendar.render();
-    },
+    let dateStr = info.event.startStr;
 
-    dayCellClassNames: function(arg) {
-      const d   = arg.date;
-      const str = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-      return str === selectedDateStr ? ['selected-day'] : [];
-    }
+    currentDate = new Date(dateStr);
+    selectedDateStr = dateStr;
+
+    updateLog(dateStr);
+    calendar.gotoDate(dateStr);
+    calendar.render();
+  },
+
+
+dayCellClassNames: function(arg) {
+  let d = new Date(arg.date);
+
+  let year = d.getFullYear();
+  let month = String(d.getMonth() + 1).padStart(2, '0');
+  let day = String(d.getDate()).padStart(2, '0');
+
+  let dateStr = `${year}-${month}-${day}`;
+
+  if (dateStr === selectedDateStr) {
+    return ['selected-day'];
+  }
+
+  return [];
+}
   });
 
+  
   calendar.render();
 
+  // Keyboard navigation
   document.addEventListener('keydown', function(e) {
-    if (currentMode !== 'daily') return;
-    if      (e.key === 'ArrowRight') currentDate.setDate(currentDate.getDate() + 1);
-    else if (e.key === 'ArrowLeft')  currentDate.setDate(currentDate.getDate() - 1);
-    else if (e.key === 'ArrowUp')    currentDate.setDate(currentDate.getDate() - 7);
-    else if (e.key === 'ArrowDown')  currentDate.setDate(currentDate.getDate() + 7);
-    else return;
 
-    const dateStr = toDateStr(currentDate);
-    if (dateStr < '2026-04-01' || dateStr > '2026-07-31') return;
-    selectedDateStr = dateStr;
-    calendar.gotoDate(dateStr);
-    updateLog(dateStr);
-    calendar.render();
-  });
+  if (e.key === "ArrowRight") {
+    currentDate.setDate(currentDate.getDate() + 1);
+  } 
+  else if (e.key === "ArrowLeft") {
+    currentDate.setDate(currentDate.getDate() - 1);
+  }  
+  else if (e.key === "ArrowUp") {
+    currentDate.setDate(currentDate.getDate() - 7);
+  } 
+  else if (e.key === "ArrowDown") {
+    currentDate.setDate(currentDate.getDate() + 7);
+  }
+  else return;
+
+  let dateStr = currentDate.toISOString().split('T')[0];
+
+  if (dateStr < "2026-04-01" || dateStr > "2026-07-31") return;
+
+  selectedDateStr = dateStr;
+  calendar.gotoDate(dateStr);
+  updateLog(dateStr);
+  calendar.render(); // reapply highlight
+});
+
+
 });
 </script>
+
 </body>
 </html>
