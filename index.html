@@ -125,7 +125,7 @@ body {
 .banner-item {
   position: relative;
   width: 100%;
-  height: 320px;
+  height: 380px;
   border-radius: 0px;
   overflow: hidden;
   display: flex;
@@ -138,21 +138,22 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position:right center;
 }
 
 .banner-item::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.65) 40%, rgba(0,0,0,0.05) 100%);
+  background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.0) 70%);
 }
 
 .banner-text {
   position: relative;
   z-index: 2;
-  padding: 0 48px;
+  padding: 0 60px;
   color: white;
-  max-width: 480px;
+  max-width: 500px;
   text-align: left;
 }
 
@@ -168,6 +169,18 @@ body {
   color: rgba(255,255,255,0.88);
 }
 
+.banner-item.reverse::after {
+  background: linear-gradient(to left, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.0) 70%);
+}
+
+.banner-item.reverse .banner-text {
+  margin-left: auto;
+  text-align: left;
+}
+
+.banner-item.reverse img {
+  object-position: left center;
+}
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
@@ -241,7 +254,7 @@ body {
       </div>
     </div>
 
-    <div class="banner-item">
+    <div class="banner-item reverse">
       <img src="images/control chart.jpg">
       <div class="banner-text">
         <h3>Control Chart</h3>
@@ -257,7 +270,7 @@ body {
       </div>
     </div>
 
-    <div class="banner-item">
+    <div class="banner-item reverse">
       <img src="images/root cause.jpg">
       <div class="banner-text">
         <h3>Root Cause Analysis</h3>
@@ -273,7 +286,7 @@ body {
       </div>
     </div>
 
-    <div class="banner-item">
+    <div class="banner-item reverse">
       <img src="images/inspection.jpg">
       <div class="banner-text">
         <h3>Inspection</h3>
