@@ -104,65 +104,68 @@ body {
 .factors {
   padding: 60px 40px;
   text-align: center;
+  background: #f5f5f5;
 }
 
 .factors h2 {
-  font-size: 32px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.factors-subtitle {
-  font-size: 16px;
-  color: #666;
+  font-size: 36px;
+  font-weight: 700;
   margin-bottom: 40px;
+  color: #111;
 }
 
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.banner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   max-width: 900px;
   margin: 0 auto;
 }
 
-.learn-card {
-  background: white;
-  border: 1px solid #e8e8e8;
-  border-radius: 12px;
-  padding: 28px 20px 24px;
+.banner-item {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.banner-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.65) 40%, rgba(0,0,0,0.05) 100%);
+}
+
+.banner-text {
+  position: relative;
+  z-index: 2;
+  padding: 0 48px;
+  color: white;
+  max-width: 480px;
   text-align: left;
-  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
-.learn-card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  border-color: #ccc;
+.banner-text h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
-.icon-wrap {
-  width: 48px; height: 48px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
-  font-size: 22px;
-}
-
-.ic-blue   { background: #E6F1FB; }
-.ic-teal   { background: #E1F5EE; }
-.ic-green  { background: #EAF3DE; }
-.ic-amber  { background: #FAEEDA; }
-.ic-coral  { background: #FAECE7; }
-.ic-purple { background: #EEEDFE; }
-
-.learn-card h3 { font-size: 15px; font-weight: 600; margin: 0 0 8px; color: #111; }
-.learn-card p  { font-size: 14px; line-height: 1.6; color: #555; margin: 0; }
-
-@media (max-width: 700px) {
-  .cards-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 480px) {
-  .cards-grid { grid-template-columns: 1fr; }
+.banner-text p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.88);
 }
 
 @media (max-width: 900px) {
@@ -227,44 +230,55 @@ body {
 
 <section class="factors">
   <h2>What I Learned During Internship (QE)</h2>
-  <p class="factors-subtitle">Key skills and knowledge gained throughout my industrial training</p>
 
-  <div class="cards-grid">
+  <div class="banner-list">
 
-    <div class="learn-card">
-      <div class="icon-wrap ic-blue">📈</div>
-      <h3>SPC</h3>
-      <p>Statistical Process Control is used to monitor and control production processes using data and statistics.</p>
+    <div class="banner-item">
+      <img src="images/spc.jpg">
+      <div class="banner-text">
+        <h3>Statistical Process Control (SPC)</h3>
+        <p>Monitor and control production processes using statistical data to detect variations and ensure consistent quality output.</p>
+      </div>
     </div>
 
-    <div class="learn-card">
-      <div class="icon-wrap ic-teal">📉</div>
-      <h3>Control Chart</h3>
-      <p>Used to identify variation with UCL, LCL, and CL to ensure process stability over time.</p>
+    <div class="banner-item">
+      <img src="images/control chart.jpg">
+      <div class="banner-text">
+        <h3>Control Chart</h3>
+        <p>Track UCL, LCL, and CL to identify process variation and ensure stability across the production line.</p>
+      </div>
     </div>
 
-    <div class="learn-card">
-      <div class="icon-wrap ic-green">✅</div>
-      <h3>In-Process QC</h3>
-      <p>Quality checks performed during production to ensure products meet defined specifications.</p>
+    <div class="banner-item">
+      <img src="images/qc.jpg">
+      <div class="banner-text">
+        <h3>In-Process Quality Control</h3>
+        <p>Conduct quality checks during production to ensure every product meets required specifications and standards.</p>
+      </div>
     </div>
 
-    <div class="learn-card">
-      <div class="icon-wrap ic-amber">🔍</div>
-      <h3>Root Cause Analysis</h3>
-      <p>Identifying the main cause of defects using methods like 5 Why or Fishbone Diagram.</p>
+    <div class="banner-item">
+      <img src="images/root cause.jpg">
+      <div class="banner-text">
+        <h3>Root Cause Analysis</h3>
+        <p>Identify the root cause of defects using structured methods like 5 Why and Fishbone Diagram.</p>
+      </div>
     </div>
 
-    <div class="learn-card">
-      <div class="icon-wrap ic-coral">⚠️</div>
-      <h3>FMEA</h3>
-      <p>Failure Mode and Effects Analysis — identifying risks and potential defects before they occur.</p>
+    <div class="banner-item">
+      <img src="images/fmea.jpg">
+      <div class="banner-text">
+        <h3>FMEA</h3>
+        <p>Failure Mode and Effects Analysis — proactively identify risks and prevent potential defects before they happen.</p>
+      </div>
     </div>
 
-    <div class="learn-card">
-      <div class="icon-wrap ic-purple">🔎</div>
-      <h3>Inspection</h3>
-      <p>Checking product quality using measurement tools and standards throughout the production process.</p>
+    <div class="banner-item">
+      <img src="images/inspection.jpg">
+      <div class="banner-text">
+        <h3>Inspection</h3>
+        <p>Check product quality using precision measurement tools and quality standards throughout production.</p>
+      </div>
     </div>
 
   </div>
