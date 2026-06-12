@@ -20,13 +20,26 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 40px;
+  padding: 16px 24px;
   background: white;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.logo { height: 60px; }
+.logo { height: 50px; }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+}
 
 .nav-menu ul {
   list-style: none;
@@ -35,6 +48,7 @@ body {
 }
 
 .nav-menu a {
+  display: block;
   padding: 10px 18px;
   color: black;
   text-decoration: none;
@@ -87,6 +101,52 @@ body {
 .summary-card.work {
   background: linear-gradient(135deg, #4caf50, #81c784);
 }
+
+.summary-card.month-total {
+  background: linear-gradient(135deg, #9c27b0, #ba68c8);
+}
+
+.summary-card.month-work {
+  background: linear-gradient(135deg, #ff9800, #ffb74d);
+}
+
+.summary-divider {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.summary-group-label {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+.month-summary-box {
+  max-width: 900px;
+  margin: 10px auto 25px auto;
+  padding: 18px 24px;
+  background: white;
+  border-left: 4px solid #9c27b0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  line-height: 1.6;
+}
+
+.month-summary-box h3 {
+  margin: 0 0 8px 0;
+  color: #9c27b0;
+}
+
+.month-summary-box p {
+  margin: 0;
+  color: #333;
+}
+
 /* Layout (Dashboard style) */
 .calendar-container {
   display: grid;
@@ -159,6 +219,88 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 900px) {
+  .menu-toggle { display: block; }
+
+  .nav-menu {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .nav-menu.open { display: block; }
+
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0;
+  }
+
+  .nav-menu li { width: 100%; }
+
+  .nav-menu a {
+    padding: 14px 24px;
+    font-size: 17px;
+  }
+
+  h2 { font-size: 24px; }
+
+  .summary-container {
+    gap: 10px;
+    margin: 10px auto 16px auto;
+    padding: 0 12px;
+  }
+
+  .summary-card {
+    width: calc(50% - 5px);
+    padding: 14px;
+  }
+
+  .summary-card .label { font-size: 12px; }
+  .summary-card .value { font-size: 22px; }
+
+  .calendar-container {
+    margin: 16px;
+    gap: 16px;
+  }
+
+  #calendar { padding: 8px; }
+
+  /* Shrink calendar text/cells on small screens */
+  .fc .fc-toolbar-title { font-size: 16px; }
+  .fc .fc-button { padding: 4px 8px; font-size: 13px; }
+  .fc-event-title, .fc-event-time { font-size: 10px; }
+  .fc-daygrid-day-number { font-size: 12px; }
+
+  #logDetails { padding: 14px; min-height: 200px; }
+  .log-date { font-size: 18px; padding: 10px; }
+  .log-content { font-size: 14px; padding: 10px; }
+
+  .month-summary-box {
+    margin: 10px 16px 20px 16px;
+    padding: 14px 16px;
+  }
+  .month-summary-box h3 { font-size: 16px; }
+  .month-summary-box p { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .site-header { padding: 14px 16px; }
+  .logo { height: 40px; }
+
+  .summary-card { width: 100%; }
+
+  .fc .fc-toolbar-title { font-size: 14px; }
+  .fc-event-title, .fc-event-time { font-size: 0; }
+  .fc-daygrid-event { padding: 0; }
+  .fc-daygrid-day-events { min-height: 6px; }
+}
 </style>
 </head>
 
@@ -166,6 +308,7 @@ h2 {
 
 <header class="site-header">
   <img src="images/logo.jpg" class="logo">
+  <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
   <nav class="nav-menu">
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -188,6 +331,23 @@ h2 {
       <div class="label">Work Days</div>
       <div class="value" id="workDays"></div>
     </div>
+
+    <div class="summary-group-label" id="monthLabel">This Month</div>
+
+    <div class="summary-card month-total">
+      <div class="label">Days Logged</div>
+      <div class="value" id="monthTotalDays"></div>
+    </div>
+
+    <div class="summary-card month-work">
+      <div class="label">Work Days</div>
+      <div class="value" id="monthWorkDays"></div>
+    </div>
+  </div>
+
+  <div class="month-summary-box">
+    <h3 id="monthSummaryTitle">This Month</h3>
+    <p id="monthSummaryText"></p>
   </div>
 
   <div class="calendar-container">
@@ -581,6 +741,39 @@ document.addEventListener('DOMContentLoaded', function () {
 }
   updateSummary();
 
+  // Written summaries for each month (keyed by "YYYY-MM")
+  var monthSummaries = {
+    "2026-04": "In April, I reported for duty and was briefed on the company's workflow and Statistical Process Control (SPC) basics, then shadowed quality control inspections and the Process Control Plan on the production lines. The bulk of the month was spent building an automated file checker system for OQA and Smartsheet reports — designing the validation logic, building a web interface, integrating it with a Flask backend, and debugging and documenting the system. I also performed SPC control chart calculations in Excel and presented the completed file checker project to the QE Director, after which I was assigned a new project on predictive modelling of KPIV/KPOV relationships for the VCM product.",
+    "2026-05": "In May, I worked on collecting and matching KPIV and KPOV data for the predictive modelling project, then ran into weak correlations and statistical issues that required adjusting the datasets and exploring alternative modelling approaches (eventually settling on SVR and GPR). Midway through the month I was pulled onto an urgent PDF reader system to extract supplier material details for an upcoming customer audit, and was also assigned a new daily working record system, which I iteratively refined. Towards the end of the month I prepared a proposal for collecting better KPIV/KPOV data from multiple production lots, discussed it with the Quality Director and Quality Manager, and began writing the appendix and methodology sections of the predictive modelling report.",
+    "2026-06": "In June, I continued writing and refining the methodology section of the predictive modelling report, made further small improvements to the daily working record system, and prepared a user manual for the PDF File Checker System. I also performed data entry for the OQA report based on shipment announcement documents."
+  };
+
+  // Monthly summary: counts events whose date falls within the
+  // currently displayed calendar month, plus a written recap
+  function updateMonthlySummary(viewDate) {
+    let year = viewDate.getFullYear();
+    let month = viewDate.getMonth(); // 0-indexed
+
+    let monthEvents = events.filter(e => {
+      let d = new Date(e.date + "T00:00:00");
+      return d.getFullYear() === year && d.getMonth() === month;
+    });
+
+    document.getElementById("monthTotalDays").innerText = monthEvents.length;
+    document.getElementById("monthWorkDays").innerText =
+      monthEvents.filter(e => e.type !== "Rest day").length;
+
+    let monthName = viewDate.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+    document.getElementById("monthLabel").innerText = monthName;
+
+    let monthKey = `${year}-${String(month + 1).padStart(2, '0')}`;
+    document.getElementById("monthSummaryTitle").innerText = "Summary for " + monthName;
+
+    let summaryText = monthSummaries[monthKey];
+    document.getElementById("monthSummaryText").innerText =
+      summaryText || "No summary written for this month yet.";
+  }
+
   let currentDate = new Date("2026-04-01");
 
   // Format date nicely
@@ -624,6 +817,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     events: events,
 
+    datesSet: function(info) {
+      // info.view.currentStart is the first day of the displayed month
+      updateMonthlySummary(info.view.currentStart);
+    },
+
     dateClick: function(info) {
    currentDate = new Date(info.dateStr);
   selectedDateStr = info.dateStr;
@@ -664,6 +862,7 @@ dayCellClassNames: function(arg) {
 
   
   calendar.render();
+  updateMonthlySummary(new Date("2026-04-01"));
 
   // Keyboard navigation
   document.addEventListener('keydown', function(e) {
