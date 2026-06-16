@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Company</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
   <style>
     @keyframes fadeInUp {
   from {
@@ -140,11 +141,52 @@
   text-decoration: none;
   border-radius: 8px;
   transition: 0.3s;
+  margin: 6px 4px;
 }
 
 .btn:hover {
   background-color: #0056b3;
 }
+
+.btn.maps {
+  background-color: #34A853;
+}
+
+.btn.maps:hover {
+  background-color: #267a3e;
+}
+
+.info-card {
+  background: #f8f9fa;
+  border-left: 4px solid #007BFF;
+  border-radius: 10px;
+  padding: 16px 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.info-card p {
+  margin: 6px 0;
+  font-size: 17px;
+}
+
+.site-footer {
+  background: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.site-footer strong { color: white; }
+
+.site-footer a {
+  color: #90caf9;
+  text-decoration: none;
+}
+
+.site-footer a:hover { color: white; }
 
 /* ===== MOBILE STYLES ===== */
 @media (max-width: 900px) {
@@ -221,19 +263,23 @@
     <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
     <nav>
       <ul>
-        <li><a href="index.html" class="button">Home</a></li>
-        <li><a href="about me.html" class="button">About me</a></li>
-        <li><a href="logbook.html"class="button">Logbook</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about me.html">About me</a></li>
+        <li><a href="logbook.html">Logbook</a></li>
+        <li><a href="about company.html" class="active" style="background:black;color:white;border-radius:8px;">About Company</a></li>
       </ul>
     </nav>
   </header>
 
   <section class="about-section">
-    <img src="images/companyphoto.jpg" alt="company">
+    <img src="images/companyphoto.jpg" alt="company" style="width:100%;max-width:500px;height:220px;object-fit:cover;border-radius:12px;">
     <h1>About Company</h1>
-    <p>Company Name: Min Aik Technology (M) Sdn. Bhd.</p>
-    <p>Location:  No. ST814, Jalan Masjid Tanah, Kawasan Perindustrian Masjid Tanah,78300 Alor Gajah Melaka</p>
-    <p>Established: 2000</p>
+
+    <div class="info-card">
+      <p><strong>Company Name:</strong> Min Aik Technology (M) Sdn. Bhd.</p>
+      <p><strong>Established:</strong> 2000</p>
+      <p><strong>Location:</strong> No. ST814, Jalan Masjid Tanah, Kawasan Perindustrian Masjid Tanah, 78300 Alor Gajah, Melaka</p>
+    </div>
 
    <h2>Company Overview</h2>
    <p>Min Aik Technology (M) Sdn. Bhd. is a manufacturing and precision engineering company that provides contract manufacturing services to various industries. The company's core activities include plastic injection molding, metal stamping, and automated assembly, which are carried out using advanced machinery and controlled production processes to ensure high efficiency and consistency.</p>
@@ -244,13 +290,22 @@
 
 <section class="company-link">
   <h3>More Information</h3>
-  <p>    To learn more about the company, please visit their official website.</p>
-  <a href="https://www.minaik.com.my/" target="_blank" class="btn">
-  Visit Company Website
-</a>
+  <p>To learn more about the company, please visit their official website.</p>
+  <a href="https://www.minaik.com.my/" target="_blank" class="btn">Visit Company Website</a>
+  <a href="https://www.google.com/maps/search/No.+ST814,+Jalan+Masjid+Tanah,+Kawasan+Perindustrian+Masjid+Tanah,+78300+Alor+Gajah,+Melaka" target="_blank" class="btn maps">📍 View on Google Maps</a>
 </section>
 
-  
+<footer class="site-footer">
+  <p><strong>Alban Heng</strong> — QE Internship Logbook</p>
+  <p>Min Aik Technology Sdn. Bhd. &nbsp;|&nbsp; April 2026 – July 2026</p>
+  <p>Universiti Utara Malaysia &nbsp;|&nbsp; Bachelor of Science (Business Mathematics)</p>
+  <p style="margin-top:10px;">
+    <a href="index.html">Home</a> &nbsp;·&nbsp;
+    <a href="about me.html">About Me</a> &nbsp;·&nbsp;
+    <a href="logbook.html">Logbook</a>
+  </p>
+  <p style="margin-top:10px; font-size:12px; color:#666;">© 2026 Alban Heng. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
