@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Me</title>
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
   <style>
     @keyframes fadeInUp {
   from {
@@ -57,13 +58,17 @@
     text-decoration: none; 
     font-size: 18px;
     animation:fadeInUp 1s ease forwards;
+    transition: 0.3s;
     }
     nav ul a:hover { 
       background: black; 
       color: white; 
       border-radius: 8px;
-      transition: 0.3s;
-      animation:fadeInUp 1s ease forwards;
+    }
+    nav ul a.active {
+      background: black;
+      color: white;
+      border-radius: 8px;
     }
     .about-section {
       max-width: 1000px;
@@ -92,27 +97,25 @@
       font-size: 18px;
       line-height: 1.6;
       text-align: left;
-       animation: fadeInUp 1s ease forwards;
-}
-    .contact-box {
-     margin-top: 30px;
-     text-align: left;
-     display: inline-block;
-     background: #f8f9fa;
-     padding: 10px;
-     border-radius: 10px;
-     border-left: 4px solid #007BFF;
-}
-    .about-section h2{
+      animation: fadeInUp 1s ease forwards;
+      margin-bottom: 6px;
+    }
+
+    .about-section h2 {
       margin-top: 20px;
       color: #007BFF;
       animation: fadeInUp 1s ease forwards;
-}
-    .about-section p{
-      font-size: 18px;
-      line-height:1.6;
-      animation: fadeInUp 1s ease forwards;
-}
+    }
+
+    .contact-box {
+      margin-top: 20px;
+      text-align: left;
+      display: block;
+      background: #f8f9fa;
+      padding: 16px 20px;
+      border-radius: 10px;
+      border-left: 4px solid #007BFF;
+    }
 
     .info-box {
       margin-top: 20px;
@@ -226,23 +229,25 @@
       box-shadow: none;
       object-fit: contain;
     }
-.site-footer {
-  background: #111;
-  color: #ccc;
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 14px;
-  line-height: 1.8;
-}
- 
-.site-footer strong { color: white; }
- 
-.site-footer a {
-  color: #90caf9;
-  text-decoration: none;
-}
- 
-.site-footer a:hover { color: white; }
+
+    .site-footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .site-footer strong { color: white; }
+
+    .site-footer a {
+      color: #90caf9;
+      text-decoration: none;
+    }
+
+    .site-footer a:hover { color: white; }
+
     /* ===== MOBILE STYLES ===== */
     @media (max-width: 900px) {
       .menu-toggle { display: block; }
@@ -311,9 +316,10 @@
     <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
     <nav>
       <ul>
-        <li><a href="index.html" class="button">Home</a></li>
-        <li><a href="about company.html" class="button">About Company</a></li>
-        <li><a href="logbook.html"class="button">Logbook</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about me.html" class="active">About Me</a></li>
+        <li><a href="about company.html">About Company</a></li>
+        <li><a href="logbook.html">Logbook</a></li>
       </ul>
     </nav>
   </header>
@@ -379,16 +385,18 @@
     </div>
 
 </section>
-  <footer class="site-footer">
+
+<footer class="site-footer">
   <p><strong>Alban Heng</strong> — QE Internship Logbook</p>
   <p>Min Aik Technology Sdn. Bhd. &nbsp;|&nbsp; April 2026 – July 2026</p>
   <p>Universiti Utara Malaysia &nbsp;|&nbsp; Bachelor of Science (Business Mathematics)</p>
   <p style="margin-top:10px;">
     <a href="index.html">Home</a> &nbsp;·&nbsp;
-    <a href="about me.html">About Me</a> &nbsp;·&nbsp;
+    <a href="about company.html">About Company</a> &nbsp;·&nbsp;
     <a href="logbook.html">Logbook</a>
   </p>
   <p style="margin-top:10px; font-size:12px; color:#666;">© 2026 Alban Heng. All rights reserved.</p>
 </footer>
+
 </body>
 </html>
