@@ -114,6 +114,119 @@
       animation: fadeInUp 1s ease forwards;
 }
 
+    .info-box {
+      margin-top: 20px;
+      text-align: left;
+      display: block;
+      background: #f8f9fa;
+      padding: 16px 20px;
+      border-radius: 10px;
+      border-left: 4px solid #007BFF;
+    }
+
+    .info-box h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #007BFF;
+    }
+
+    .info-box p { margin: 4px 0; font-size: 17px; }
+
+    .info-box ul {
+      margin: 6px 0 0 0;
+      padding-left: 20px;
+    }
+
+    .info-box ul li { font-size: 17px; margin-bottom: 4px; }
+
+    .info-box .sub-label {
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 2px;
+      color: #333;
+    }
+
+    .social-box {
+      margin-top: 20px;
+      text-align: left;
+      background: #f8f9fa;
+      padding: 16px 20px;
+      border-radius: 10px;
+      border-left: 4px solid #007BFF;
+    }
+
+    .social-box h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #007BFF;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: white;
+      border: 1px solid #ddd;
+      transition: 0.2s;
+    }
+
+    .social-links a:hover { background: #000; color: white; }
+
+    .social-links a.instagram {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white;
+      border: none;
+    }
+
+    .social-links a.instagram:hover {
+      opacity: 0.85;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white;
+    }
+
+    .social-links a.facebook {
+      background: #1877F2;
+      color: white;
+      border: none;
+    }
+
+    .social-links a.facebook:hover {
+      background: #0f5bbf;
+      color: white;
+    }
+
+    .social-links a.whatsapp {
+      background: #25D366;
+      color: white;
+      border: none;
+    }
+
+    .social-links a.whatsapp:hover {
+      background: #1ead53;
+      color: white;
+    }
+
+    .social-links a img {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      border: none;
+      box-shadow: none;
+      object-fit: contain;
+    }
+
     /* ===== MOBILE STYLES ===== */
     @media (max-width: 900px) {
       .menu-toggle { display: block; }
@@ -194,11 +307,61 @@
     <p>Hello! I'm Alban, a final-year Bachelor of Science with Honours (Business Mathematics) student with a Minor in Economic Management in Universiti Utara Malaysia, currently doing my 4 months internship as a QE trainee in a manufacturing company, Min Aik Technology Sdn. Bhd. </p>
     <p>As a passionate and detail-oriented person, I enjoy working in a dynamic environment that challenges conventional thinking.</p>
   
+    <div class="info-box">
+      <h2>Academic</h2>
+      <p><strong>Degree:</strong> Bachelor of Science with Honours (Business Mathematics)</p>
+      <p><strong>Minor:</strong> Economic Management</p>
+      <p><strong>University:</strong> Universiti Utara Malaysia</p>
+      <p><strong>CGPA:</strong> 3.75</p>
+    </div>
+
+    <div class="info-box">
+      <h2>Skills</h2>
+      <p class="sub-label">Programming</p>
+      <ul>
+        <li>Python</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+      <p class="sub-label">Data & Quality</p>
+      <ul>
+        <li>Excel</li>
+        <li>Statistical Process Control (SPC)</li>
+        <li>Control Chart</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h2>Languages</h2>
+      <ul>
+        <li>Mandarin</li>
+        <li>English</li>
+        <li>Malay</li>
+      </ul>
+    </div>
+
     <div class="contact-box">
       <h2>Contact Information</h2>
       <p><strong>Phone:</strong> +60-1110628854</p>
       <p><strong>Email:</strong> hengyucheng@yahoo.com</p>
+      <h3 style="margin-top:14px; margin-bottom:8px; color:#007BFF;">Social Media</h3>
+      <div class="social-links">
+        <a href="https://wa.me/601110628854" target="_blank" class="whatsapp">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+          WhatsApp
+        </a>
+        <a href="https://www.instagram.com/hengalban?igsh=NWtxbGNtd2QzaWsy" target="_blank" class="instagram">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+          Instagram — @hengalban
+        </a>
+        <a href="https://www.facebook.com/alban.heng" target="_blank" class="facebook">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+          Facebook — Alban Heng
+        </a>
+      </div>
     </div>
+
 </section>
   
 </body>
