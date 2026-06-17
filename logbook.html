@@ -212,6 +212,41 @@ h2 {
   background-color: #bbdefb ;
   border-radius: 6px;
 }
+  .event-rest-day {
+  background-color: #9e9e9e !important;
+  border-color: #757575 !important;
+}
+ 
+.event-public-holiday {
+  background-color: #e53935 !important;
+  border-color: #c62828 !important;
+}
+  .calendar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 10px auto 0 auto;
+  font-size: 14px;
+  color: #444;
+}
+ 
+.calendar-legend .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+ 
+.calendar-legend .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+ 
+.dot.work-dot { background-color: #2196f3; }
+.dot.rest-dot { background-color: #9e9e9e; }
+.dot.holiday-dot { background-color: #e53935; }
 .site-footer {
   background: #111;
   color: #ccc;
@@ -366,7 +401,13 @@ h2 {
     <h3 id="monthSummaryTitle">This Month</h3>
     <p id="monthSummaryText"></p>
   </div>
-
+  
+  <div class="calendar-legend">
+    <div class="legend-item"><span class="dot work-dot"></span> Work Day</div>
+    <div class="legend-item"><span class="dot rest-dot"></span> Rest Day</div>
+    <div class="legend-item"><span class="dot holiday-dot"></span> Public Holiday</div>
+  </div>
+  
   <div class="calendar-container">
     <div id="calendar"></div>
     <div id="logDetails">Click a date or use ← → keys.</div>
@@ -543,7 +584,7 @@ document.addEventListener('DOMContentLoaded', function () {
      {
       title: "Public holiday (labour day)",
       date: "2026-05-01",
-      type:"Rest day",
+      type:"Public Holiday",
       details: "Public holiday (labour day)"
     },
     {
@@ -685,7 +726,7 @@ document.addEventListener('DOMContentLoaded', function () {
     {
       title: "Public Holiday (Hari Raya Haji)",
       date: "2026-05-27",
-      type:"Rest day",
+      type:"Public Holiday",
       details: "Public Holiday (Hari Raya Haji)"
     },
     {
@@ -713,7 +754,7 @@ document.addEventListener('DOMContentLoaded', function () {
     {
       title: "Public Holiday (Birthday of Yang di-Pertuan Agong)",
       date: "2026-06-01",
-      type:"Rest day",
+      type:"Public Holiday",
       details: "Public Holiday (Birthday of Yang di-Pertuan Agong"
     },
     
@@ -880,7 +921,16 @@ document.addEventListener('DOMContentLoaded', function () {
     },
 
     events: events,
-
+    eventClassNames: function(arg) {
+      if (arg.event.extendedProps.type === "Public holiday") {
+        return ['event-public-holiday'];
+      }
+      if (arg.event.extendedProps.type === "Rest day") {
+        return ['event-rest-day'];
+      }
+      return [];
+    },
+    
     datesSet: function(info) {
       updateMonthlySummary(info.view.currentStart);
     
