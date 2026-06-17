@@ -582,10 +582,10 @@ document.addEventListener('DOMContentLoaded', function () {
       details: "Initiated the predictive modeling task by collecting relevant process and quality data. Identified required variables and began organizing datasets to support further analysis and model development. Focused on ensuring data completeness and suitability for modeling purposes."
     },
      {
-      title: "Public holiday (labour day)",
+      title: "Public Holiday (labour day)",
       date: "2026-05-01",
       type:"Public Holiday",
-      details: "Public holiday (labour day)"
+      details: "Public Holiday (labour day)"
     },
     {
       title: "Rest day",
@@ -842,7 +842,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateSummary() {
   document.getElementById("totalDays").innerText = events.length;
   document.getElementById("workDays").innerText =
-    events.filter(e => e.type !== "Rest day").length;
+    events.filter(e => e.type !== "Rest day" && e.type !== "Public Holiday").length;
 }
   updateSummary();
 
@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById("monthTotalDays").innerText = monthEvents.length;
     document.getElementById("monthWorkDays").innerText =
-      monthEvents.filter(e => e.type !== "Rest day").length;
+      monthEvents.filter(e => e.type !== "Rest day" && e.type !== "Public Holiday").length;
 
     let monthName = viewDate.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
     document.getElementById("monthLabel").innerText = monthName;
@@ -922,7 +922,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     events: events,
     eventClassNames: function(arg) {
-      if (arg.event.extendedProps.type === "Public holiday") {
+      if (arg.event.extendedProps.type === "Public Holiday") {
         return ['event-public-holiday'];
       }
       if (arg.event.extendedProps.type === "Rest day") {
@@ -949,8 +949,9 @@ document.addEventListener('DOMContentLoaded', function () {
 },
   eventClick: function(info) {
     info.jsEvent.preventDefault(); // prevent default popup
-    localStorage.setItem('logbook_selectedDate', dateStr);
     let dateStr = info.event.startStr;
+    localStorage.setItem('logbook_selectedDate', dateStr);
+    
 
     currentDate = new Date(dateStr);
     selectedDateStr = dateStr;
