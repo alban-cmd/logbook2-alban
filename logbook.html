@@ -375,7 +375,7 @@ h2 {
 
 
 <script>
-let selectedDateStr=null;
+let selectedDateStr = localStorage.getItem('logbook_selectedDate') || null;
 document.addEventListener('DOMContentLoaded', function () {
 
   var calendarEl = document.getElementById('calendar');
@@ -838,7 +838,7 @@ document.addEventListener('DOMContentLoaded', function () {
       summaryText || "No summary written for this month yet.";
   }
 
-  let currentDate = new Date("2026-04-01");
+  let currentDate = selectedDateStr ? new Date(selectedDateStr + "T00:00:00") : new Date("2026-04-01");
 
   // Format date nicely
   function formatDate(dateStr) {
@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
-    initialDate: '2026-04-01',
+    initialDate: localStorage.getItem('logbook_currentMonth') || '2026-04-01',
 
     validRange: {
       start: '2026-04-01',
@@ -882,8 +882,11 @@ document.addEventListener('DOMContentLoaded', function () {
     events: events,
 
     datesSet: function(info) {
-      // info.view.currentStart is the first day of the displayed month
       updateMonthlySummary(info.view.currentStart);
+    
+      let y = info.view.currentStart.getFullYear();
+      let m = String(info.view.currentStart.getMonth() + 1).padStart(2, '0');
+      localStorage.setItem('logbook_currentMonth', `${y}-${m}-01`);
     },
 
     dateClick: function(info) {
@@ -892,10 +895,11 @@ document.addEventListener('DOMContentLoaded', function () {
   updateLog(info.dateStr);
   calendar.refetchEvents(); // optional
   calendar.render(); // refresh to apply highlight
+  localStorage.setItem('logbook_selectedDate', info.dateStr);
 },
   eventClick: function(info) {
     info.jsEvent.preventDefault(); // prevent default popup
-
+    localStorage.setItem('logbook_selectedDate', dateStr);
     let dateStr = info.event.startStr;
 
     currentDate = new Date(dateStr);
@@ -926,7 +930,11 @@ dayCellClassNames: function(arg) {
 
   
   calendar.render();
-  updateMonthlySummary(new Date("2026-04-01"));
+  updateMonthlySummary(calendar.view.currentStart);
+
+if (selectedDateStr) {
+  updateLog(selectedDateStr);
+}
 
   // Keyboard navigation
   document.addEventListener('keydown', function(e) {
