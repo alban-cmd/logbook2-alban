@@ -353,7 +353,30 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+.stats-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
 
+.stats-row .summary-container {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+}
+
+.stats-row .month-summary-box {
+  flex: 1;
+  margin: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 /* ===== MOBILE STYLES ===== */
 @media (max-width: 900px) {
   .menu-toggle { display: block; }
@@ -411,30 +434,7 @@ h2 {
   }
 
   #calendar { padding: 8px; }
-  .stats-row {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;
-}
-
-.stats-row .summary-container {
-  flex: 0 0 auto;
-  margin: 0;
-  padding: 0;
-}
-
-.stats-row .month-summary-box {
-  flex: 1;
-  margin: 0;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  
   /* Shrink calendar text/cells on small screens */
   .fc .fc-toolbar-title { font-size: 16px; }
   .fc .fc-button { padding: 4px 8px; font-size: 13px; }
