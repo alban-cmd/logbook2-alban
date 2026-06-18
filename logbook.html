@@ -398,14 +398,43 @@ h2 {
 
   .summary-card .label { font-size: 12px; }
   .summary-card .value { font-size: 22px; }
+  .stats-row {
+  flex-direction: column;
+}
 
+.stats-row .month-summary-box {
+  margin: 0;
+}
   .calendar-container {
     margin: 16px;
     gap: 16px;
   }
 
   #calendar { padding: 8px; }
+  .stats-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
 
+.stats-row .summary-container {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+}
+
+.stats-row .month-summary-box {
+  flex: 1;
+  margin: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
   /* Shrink calendar text/cells on small screens */
   .fc .fc-toolbar-title { font-size: 16px; }
   .fc .fc-button { padding: 4px 8px; font-size: 13px; }
@@ -475,24 +504,22 @@ h2 {
 <section>
   <h2>Internship Logbook</h2>
 
+  <div class="stats-row">
+
   <div class="summary-container">
     <div class="summary-card total">
       <div class="label">Total Days</div>
       <div class="value" id="totalDays"></div>
     </div>
-
     <div class="summary-card work">
       <div class="label">Work Days</div>
       <div class="value" id="workDays"></div>
     </div>
-
     <div class="summary-group-label" id="monthLabel">This Month</div>
-
     <div class="summary-card month-total">
       <div class="label">Days Logged</div>
       <div class="value" id="monthTotalDays"></div>
     </div>
-
     <div class="summary-card month-work">
       <div class="label">Work Days</div>
       <div class="value" id="monthWorkDays"></div>
@@ -503,6 +530,8 @@ h2 {
     <h3 id="monthSummaryTitle">This Month</h3>
     <p id="monthSummaryText"></p>
   </div>
+
+</div>
   
   <div class="calendar-legend">
     <div class="legend-item"><span class="dot work-dot"></span> Work Day</div>
