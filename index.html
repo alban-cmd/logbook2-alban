@@ -404,7 +404,50 @@ body.dark-mode .site-footer {
 }
 
 .site-footer a:hover { color: white; }
-    
+/* ===== SCROLL FADE IN ===== */
+.banner-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.banner-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== HOVER: glow shadow on banner ===== */
+.banner-item:hover {
+  box-shadow: 0 8px 32px rgba(0, 123, 255, 0.25);
+  z-index: 1;
+}
+
+body.dark-mode .banner-item:hover {
+  box-shadow: 0 8px 32px rgba(100, 180, 255, 0.3);
+}
+
+/* ===== HOVER: image zoom ===== */
+.banner-item img {
+  transition: transform 0.5s ease;
+}
+
+.banner-item:hover img {
+  transform: scale(1.06);
+}
+
+/* ===== HOVER: text highlight ===== */
+.banner-item:hover .banner-text h3 {
+  color: #007BFF;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .banner-item:hover .banner-text h3 {
+  color: #90caf9;
+}
+
+.banner-text h3 {
+  transition: color 0.3s ease;
+}
 
   </style>
 </head>
@@ -530,6 +573,22 @@ body.dark-mode .site-footer {
   </p>
   <p style="margin-top:10px; font-size:12px; color:#666;">© 2026 Alban Heng Yu Cheng. All rights reserved.</p>
 </footer>
+<script>
+  // Scroll fade-in for banner items
+  const banners = document.querySelectorAll('.banner-item');
 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 150); // stagger each banner by 150ms
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  banners.forEach(banner => observer.observe(banner));
+</script>
 </body>
 </html>
