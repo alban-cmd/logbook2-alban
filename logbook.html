@@ -1066,7 +1066,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (event) {
       logDiv.innerHTML = `
         <div class="log-date">${formatDate(dateStr)}</div>
-        <div class="log-content">${event.details}</div>
+        <div class="log-content">
+          <div style="font-size:15px; font-weight:600; margin-bottom:8px; border-bottom:1px solid #ddd; padding-bottom:6px;">${event.title}</div>
+          ${event.details}
+        </div>
       `;
     } else {
       logDiv.innerHTML = `
