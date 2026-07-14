@@ -97,6 +97,7 @@ body.dark-mode #calendar,
 body.dark-mode #logDetails {
   background: #1e1e1e;
   color: #e0e0e0;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.6);
 }
 
 body.dark-mode .log-content {
@@ -113,6 +114,35 @@ body.dark-mode .fc-toolbar-title {
 body.dark-mode .fc-button {
   background-color: #333 !important;
   border-color: #555 !important;
+}
+body.dark-mode .fc-button:not(:disabled):hover {
+  background-color: #444 !important;
+  border-color: #666 !important;
+}
+body.dark-mode .fc-button:disabled {
+  opacity: 0.4;
+}
+
+/* Grid lines: FullCalendar's default border color is tuned for a
+   white page and looks like a bright lattice on a dark card, so
+   we retint it to match the dark theme */
+body.dark-mode .fc-theme-standard td,
+body.dark-mode .fc-theme-standard th,
+body.dark-mode .fc-scrollgrid {
+  border-color: #3a3a3a;
+}
+
+/* "Today" highlight: default is a light-yellow tint meant for
+   light backgrounds; swap it for a subtle blue tint that matches
+   the .selected-day accent color already used in dark mode */
+body.dark-mode .fc-day-today {
+  background-color: rgba(45, 79, 107, 0.35) !important;
+}
+
+/* Adjacent-month day numbers (greyed out by FullCalendar) can get
+   too dim to read against the dark background, so lift them slightly */
+body.dark-mode .fc-day-other .fc-daygrid-day-number {
+  color: #888;
 }
 
 body.dark-mode .fc-daygrid-day:hover {
