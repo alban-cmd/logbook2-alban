@@ -718,6 +718,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     calendar.render(); // reapply the selected-day highlight
   }
 
+  calendarEl.innerHTML = ''; // clear "Loading logbook…" placeholder before FullCalendar renders in
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     initialDate: localStorage.getItem('logbook_currentMonth') || '2026-04-01',
