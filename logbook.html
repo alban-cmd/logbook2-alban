@@ -519,576 +519,22 @@ h2 {
 
 <script>
 let selectedDateStr = localStorage.getItem('logbook_selectedDate') || null;
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
 
   var calendarEl = document.getElementById('calendar');
 
-  var events = [
-    {
-      title: "Report for duty & HR briefing",
-      date: "2026-04-01",
-      details: "I reported for duty at Min Aik Technology Sdn. Bhd. Upon arrival, I registered my fingerprints for daily access and attended a company briefing conducted by the Human Resource Department. During the session, I became familiar with the company’s workflow and operational processes, including an introduction to Statistical Process Control (SPC)."
-    },
-    {
-      title: "Exposure to Quality Control Procedures",
-      date: "2026-04-02",
-      details: "I accompanied my supervisor to the quality control sections of each production line, where I observed inspection procedures and gained insight into quality monitoring practices."
-    },
-    {
-      title: "Understanding Process Control Plan",
-      date: "2026-04-03",
-      details: "I revisited the production lines with my supervisor and was introduced to the Process Control Plan, which outlines methods used to maintain and improve product quality."
-    },
-    {
-      title: "Rest day",
-      date: "2026-04-04",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-04-05",
-      type:"Rest day",
-      details: "Rest day."
-    },
+  let events;
+  try {
+    const response = await fetch('events.json');
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    events = await response.json();
+  } catch (err) {
+    console.error('Failed to load events.json:', err);
+    document.getElementById('logDetails').innerHTML =
+      '⚠️ Could not load logbook entries (events.json). Check that the file was uploaded to the same folder as logbook.html.';
+    return;
+  }
 
-    {
-      title: "Project Assignment and Requirement Understanding",
-      date: "2026-04-06",
-      details: "On this day, I was assigned by my supervisor to develop a file checker system aimed at automating the validation of Excel-based reports such as OQA reports and Smartsheet data. I focused on understanding the project requirements, including the types of files involved, their structures, and the key validation rules such as lot number conditions, inspection types, and data completeness. I also identified the expected output of the system, which includes detecting errors and generating validation results. This initial stage helped me understand the importance of data accuracy in quality control processes and laid a strong foundation for further development."
-    },
-    {
-      title: "System Logic Design and Production Flow Exposure",
-      date: "2026-04-07",
-      details: "On this day, I began designing the system logic using Python. This involved planning how to read Excel files using libraries such as Pandas, identifying relevant sheets such as the Supplier Cover Sheet and Critical Parameter Data, and structuring the program into functions to ensure better organization and scalability. In addition, my supervisor brought me to observe the production flow, where I learned about the overall manufacturing process, quality control procedures at different stages, and the importance of accurate data recording. This exposure provided valuable practical insight and helped me align the system design with real industrial applications."
-    },
-    {
-      title: "Development of Core Validation Functions",
-      date: "2026-04-08",
-      details: "On this day, I continued developing the program by implementing the core validation functions. I worked on writing logic to verify conditions such as lot number thresholds and inspection requirements, as well as checking whether all required data fields were properly filled. I also handled variations in file structure and formatting to ensure the program could function reliably. Furthermore, I improved the robustness of the system by addressing potential errors such as missing sheets or inconsistent column names, which enhanced my problem-solving skills."
-    },
-    {
-      title: "Web Interface Design and Development",
-      date: "2026-04-09",
-      details: "On this day, I started developing a web-based interface to improve the usability of the system. Instead of running the Python program manually, users can interact with the system through a webpage. I designed the layout using HTML and CSS, planned the user workflow from file upload to result display, and ensured that the interface presents validation results clearly and effectively. This phase introduced me to frontend development and improved my understanding of user-centered design."
-    },
-    {
-      title: "Integration of Frontend and Backend Systems",
-      date: "2026-04-10",
-      details: "On this day, I focused on integrating the web interface with the backend Python logic using a framework such as Flask. This involved handling file uploads from the webpage, passing the uploaded files to the validation program, and returning the results to the user interface. I also ensured that the system provides meaningful feedback, such as error messages when validation fails and confirmation messages when all requirements are met. This integration process enhanced my understanding of full-stack development and how different components interact in real-world applications."
-    },
-    {
-      title: "Rest day",
-      date: "2026-04-11",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-04-12",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Development of Automated File Checker Program",
-      date: "2026-04-13",
-      details: "Continued development of the automated file checker program by improving coding logic for file validation and error detection. Focused on enhancing the program’s capability to verify data consistency, identify discrepancies, and support automation of manual file checking processes. Performed debugging and preliminary functional testing to evaluate system performance and accuracy."
-    },
-    {
-      title: "Program Optimization and Functional Verification",
-      date: "2026-04-14",
-      details: "Continued coding and optimization of the automated file checker system. Worked on refining checking algorithms, improving program flow, and resolving issues identified during testing. Conducted additional verification to ensure the system could reliably detect missing or mismatched information and improve the robustness of the automation process."
-    },
-    {
-      title: "File Checker Development and Statistical Process Control (SPC) Review",
-      date: "2026-04-15",
-      details: "Continued development of the automated file checker program, focusing on improving validation functions and overall system reliability. Attended the weekly engineering meeting involving Statistical Process Control (SPC) analysis for product monitoring, where process capability, control chart trends, and variation analysis were reviewed. Gained exposure to the application of SPC tools in quality monitoring and process improvement activities."
-    },
-    {
-      title: "Debugging and Improvement of Automation Workflow",
-      date: "2026-04-16",
-      details: "Continued coding and debugging activities for the automated file checker project. Focused on improving system functionality, correcting logic errors, and strengthening the automation workflow to enhance efficiency and reduce manual verification effort. Performed testing to validate program outputs against expected checking criteria."
-    },
-    {
-      title: "Project Documentation and Presentation Preparation",
-      date: "2026-04-17",
-      details: "Continued development of the automated file checker while preparing PowerPoint presentation slides for project progress review. Compiled project background, objectives, methodology, current development status, and anticipated benefits of the automation system. Prepared presentation materials to communicate project progress and technical findings effectively to supervisors and team members."
-    },
-    {
-      title: "Rest day",
-      date: "2026-04-18",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-04-19",
-      type:"Rest day",
-      details: "Rest day."
-    },
-      {
-      title: "System Development and Improvement",
-      date: "2026-04-20",
-      details: "Continued development of the automated file checker program with focus on improving coding logic and enhancing system functionality. Made incremental improvements to the validation process to increase accuracy and reduce potential errors during file checking."
-    },
-      {
-      title: "Enhancement of Automation Program",
-      date: "2026-04-21",
-      details: "Continued coding and refinement of the file checker system. Worked on optimizing program performance and improving the reliability of data verification by addressing issues identified during testing."
-    },
-      {
-      title: "Strengthening Validation Rules and Error Handling",
-      date: "2026-04-22",
-      details: "Continued development of the automation system with emphasis on debugging and strengthening program logic. Added clearer error messages to help users identify exactly which field or condition caused a validation failure, and tested the system against edge cases such as missing sheets and blank rows to ensure consistent and accurate checks."
-    },
-      {
-      title: "System Improvement and Presentation Preparation",
-      date: "2026-04-23",
-      details: "Continued enhancing the automated file checker while preparing presentation materials for the project. Organized key points including system functionality, development progress, and expected benefits for effective communication during the presentation."
-    },
-      {
-      title: "SPC Calculation and Data Analysis Using Excel",
-      date: "2026-04-24",
-      details: "Performed Statistical Process Control (SPC) analysis for the product by calculating control charts for each dimension using Excel. Applied X-bar and R chart formulas to evaluate process stability and variation, supporting quality monitoring and analysis."
-    },
-     {
-      title: "Rest day",
-      date: "2026-04-25",
-      type:"Rest day",
-      details: "Rest day."
-    }, {
-      title: "Rest day",
-      date: "2026-04-26",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Final System Debugging and Presentation Preparation",
-      date: "2026-04-27",
-      details: "Conducted final debugging and system validation for the automated file checker prior to project presentation. Ensured all functionalities were working as expected and resolved remaining issues. Prepared and finalized presentation slides, summarizing project objectives, system workflow, and key outcomes for review by the QE Director."
-    },
-    {
-      title: "Project Presentation and New Task Assignment",
-      date: "2026-04-28",
-      details: "Presented the automated file checker project to the QE Director, explaining the system design, implementation, and benefits. Received feedback during the session, and was assigned a new project to develop a predictive model analyzing the relationship between Key Process Input Variables (KPIV) and Key Process Output Variables (KPOV) for the VCM product."
-    },
-    
-    {
-      title: "Process Understanding and Project Familiarization",
-      date: "2026-04-29",
-      details: "Studied and analyzed the process flow of the VCM product to support the development of the predictive model. Referred to documentation and past projects to gain a better understanding of relevant KPIVs and KPOVs, as well as the overall manufacturing process and data structure."
-    },
-     {
-      title: "Data Collection for Predictive Modeling",
-      date: "2026-04-30",
-      details: "Initiated the predictive modeling task by collecting relevant process and quality data. Identified required variables and began organizing datasets to support further analysis and model development. Focused on ensuring data completeness and suitability for modeling purposes."
-    },
-     {
-      title: "Public Holiday",
-      date: "2026-05-01",
-      type:"Public Holiday",
-      details: "Labour day"
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-02",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-03",
-      type:"Rest day",
-      details: "Rest day."
-    },
-     {
-      title: "Data Collection for Predictive Modeling",
-      date: "2026-05-04",
-      details: "Collected and identified the required KPIV and KPOV data needed for the predictive modeling project. Reviewed the available production and process data to ensure that the selected parameters are relevant for further analysis and model development."
-    },
-      {
-      title: "KPIV Data Matching Based on Production Lot",
-      date: "2026-05-05",
-      details: "Matched the KPIV data based on the production lot for each day by selecting representative row data from the lot sample data. For example, if one production lot contained multiple sample measurements, one sample row was selected randomly to represent the KPIV data for that particular lot before matching it with the corresponding KPOV data."
-    },
-     {
-      title: "Initial Modeling and Data Adjustment",
-      date: "2026-05-06",
-      details: "Attempted to perform the initial predictive modeling analysis but observed that the relationship between the KPIV and KPOV variables was relatively weak. In addition, several statistical assumptions required for the model were not fully satisfied. Began adjusting and refining the KPIV and KPOV datasets to improve data quality and model suitability."
-    },
-    {
-      title: "Refinement of Predictive Modeling Approach",
-      date: "2026-05-07",
-      details: "Continued working on the adjustment and refinement of the KPIV and KPOV data to improve the modeling results. Also explored alternative predictive models and approaches to achieve better prediction performance for the KPOV variables."
-    },
-    {
-      title: "Development of Supplier Material PDF Reader System",
-      date: "2026-05-08",
-      details: "Received a new task assignment from the supervisor to prioritize the development of a PDF reader system for extracting and saving supplier material details. The system is required urgently to support upcoming customer audit activities and improve document traceability."
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-09",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-10",
-      type:"Rest day",
-      details: "Rest day."
-    },
-
-     {
-      title: "Continued Development of PDF Reader System",
-      date: "2026-05-11",
-      details: "Continued developing the PDF reader system for extracting and storing supplier material details. Focused on improving the system workflow, data extraction accuracy, and file handling process to support document management for audit preparation."     
-    },
-    
-     {
-      title: "Discussion on Predictive Modeling Issues",
-      date: "2026-05-12",
-      details: "Had a discussion session with the manager regarding the issues faced in the predictive modeling project. Reviewed the current modeling results, identified possible causes of weak prediction performance, and discussed potential solutions and improvement approaches."
-    },
-     {
-      title: "Improvement of Predictive Modeling",
-      date: "2026-05-13",
-      details: "Continued working on improving the predictive modeling project by refining the dataset and testing different modeling approaches. Focused on enhancing the relationship between KPIV and KPOV variables and improving the overall prediction performance."
-    },
-     {
-      title: "Assignment of New Daily Working Record System Project",
-      date: "2026-05-14",
-      details: "Received a new project assignment from the manager to develop a simple daily working record system. Started understanding the project requirements and planning the basic structure and functions needed for the system."
-    },
-    
-     {
-      title: "System Adjustments and Preparation of New Data Collection Proposal",
-      date: "2026-05-15",
-      details: "Made further adjustments and improvements to both the PDF reader system and the daily working record system. At the same time, began preparing a proposal for collecting new KPIV and KPOV data due to the unresolved issues encountered in the predictive modeling project and the limitations of the existing dataset."
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-16",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-17",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-    title: "Preparation of Data Collection Proposal",
-      date: "2026-05-18",
-      details: "Started preparing the proposal for collecting new KPIV and KPOV data to support the predictive modeling project. Focused on identifying the current limitations of the existing dataset and outlining the objectives, methodology, and data requirements for the new data collection process."
-    },
-    {
-      title: "Adjustment of Daily Working Record System",
-      date: "2026-05-19",
-      details: "Made several adjustments and improvements to the daily working record system to enhance usability and system functionality. Refined the data recording process and improved the interface flow for easier daily usage."
-    },
-    {
-      title: "Discussion on Data Collection Strategy for Predictive Modeling",
-      date: "2026-05-20",
-      details: "Had a discussion session with the Quality Director regarding the data collection method for developing the predictive modeling project. She suggested collecting KPIV data from five different production lots instead of only one lot to improve the dataset quality, increase variability representation, and enhance the reliability of the predictive model."
-    },
-  {
-      title: "Finalization of Data Collection Proposal",
-      date: "2026-05-21",
-      details: "Finalized the proposal for the new KPIV and KPOV data collection process. Reviewed and organized the proposal content, including the problem statement, objectives, methodology, and proposed sampling approach for future predictive modeling development."
-    },
-    {
-      title: "System Adjustment and Predictive Model Exploration",
-      date: "2026-05-22",
-      details: "Made minor adjustments to the daily working record system to further improve its functionality and user experience. At the same time, continued exploring and identifying suitable predictive modeling approaches that can accurately predict KPOV output based on the given KPIV variables."
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-23",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-24",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Exploration of Suitable Predictive Modeling Methods",
-      date: "2026-05-25",
-      details: "Continued exploring and evaluating suitable predictive modeling methods that can accurately predict the KPOV output based on the available KPIV data. Focused on comparing different machine learning and regression approaches to identify models with better prediction capability and compatibility with the dataset."
-    },
-     {
-      title: "Confirmation of Predictive Modeling Approach and Proposal Discussion",
-      date: "2026-05-26",
-      details: "Confirmed the concept and workflow for the selected predictive modeling approaches, which are Support Vector Regression (SVR) and Gaussian Process Regression (GPR). Studied the implementation flow and understanding of both models for predicting KPOV output based on KPIV input variables. In addition, discussed the proposal for collecting new predictive modeling data with the Quality Manager, who suggested further discussion and coordination with the Production Department regarding the data collection process and feasibility."
-    },
-    {
-      title: "Public Holiday ",
-      date: "2026-05-27",
-      type:"Public Holiday",
-      details: "Hari Raya Haji"
-    },
-    {
-      title: "Preparation of Predictive Modeling Report Appendix",
-      date: "2026-05-28",
-      details: "Started writing the predictive modeling report, focusing on the appendix section. Prepared the mathematical explanations and theoretical background of the selected predictive models, including their underlying principles, equations, and assumptions. The purpose of this section is to provide technical justification and a better understanding of the modeling approaches used in the project."
-    },
-    {
-      title: "Development of Predictive Modeling Methodology Section",
-      date: "2026-05-29",
-      details: "Continued writing the predictive modeling report by developing the methodology section. Documented the overall modeling workflow, including data collection, data preprocessing, variable selection, model development procedures, model evaluation methods, and the rationale for selecting the predictive modeling techniques used in the study."
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-30",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-05-31",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Public Holiday ",
-      date: "2026-06-01",
-      type:"Public Holiday",
-      details: "Birthday of Yang di-Pertuan Agong"
-    },
-    
-    {
-      title: "Continued Development of Methodology Section",
-      date: "2026-06-02",
-      details: "Continued working on the methodology section of the predictive modeling report. Focused on refining the description of the research approach, data processing procedures, model development workflow, and evaluation methods to ensure the methodology is clearly documented and aligned with the project objectives."
-    },
-     {
-      title: "Methodology Refinement and System Improvement",
-      date: "2026-06-03",
-      details: "Continued developing and refining the methodology section of the predictive modeling report. In addition, made minor adjustments to the daily working record system to improve its functionality, usability, and overall user experience based on the latest requirements."
-    },
-    {
-      title: "Preparation of PDF File Checker User Manual",
-      date: "2026-06-04",
-      details: "Prepared the user manual for the PDF File Checker System. Documented the system functions, operating procedures, user workflow, and key features to facilitate system usage and provide guidance for future users and maintenance purposes."
-    },
-    
-    {
-      title: "OQA Report Data Entry from Shipment Announcement",
-      date: "2026-06-05",
-      details: "Performed data entry activities by keying in the required information from shipment announcement documents into the OQA report. Ensured that the information was accurately recorded and properly organized to support quality assurance documentation and reporting requirements."
-    },
-     {
-      title: "Rest day",
-      date: "2026-06-06",
-      type:"Rest day",
-      details: "Rest day."
-    },
-     {
-      title: "Rest day",
-      date: "2026-06-07",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "PDF Checker System Review and Improvement Discussion",
-      date: "2026-06-08",
-      details: "Participated in a meeting regarding the usage of the PDF Checker System. Demonstrated and discussed the system workflow, gathered user feedback, and explored potential improvements to enhance functionality, efficiency, and user experience."
-    },
-    {
-      title: "Predictive Modeling Data Collection Discussion and System Development Consultation",
-      date: "2026-06-09",
-      details: "Attended a meeting related to the predictive modeling project to discuss the data collection plan with the Production Department. The discussion focused on the feasibility of collecting the required KPIV and KPOV data and establishing a suitable sampling approach. Additionally, consulted with the IT Department regarding the development of the Daily Report System and sought technical guidance on system design and implementation."
-    },
-    {
-      title: "Support for Company System Development",
-      date: "2026-06-10",
-      details: "Assisted in the development of a company system by working on a function that reads and processes RTF (Rich Text Format) files. Reviewed file structures and explored suitable methods for extracting and handling information from RTF documents."
-    },
-      {
-      title: "Continued Support for Company System Development",
-      date: "2026-06-11",
-      details: "Continued assisting with the company system development project. Focused on improving the RTF file reading functionality, testing the implementation, and resolving issues encountered during the file processing workflow."
-    },
-    {
-      title: "Documentation Review and Project Progress Evaluation",
-      date: "2026-06-12",
-      details: "Reviewed the progress of ongoing projects, including the predictive modeling project, PDF Checker System, Daily Report System, and company system development tasks. Organized project documentation, evaluated completed work, and planned the next steps to ensure smooth progress for upcoming activities."
-    },
-    {
-      title: "Rest day",
-      date: "2026-06-13",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-06-14",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Exploration and Familiarization of New Company System",
-      date: "2026-06-15",
-      details: "Spent time exploring and familiarizing with the new company system to gain a better understanding of its functions, workflow, and system architecture. Reviewed the available features, navigation flow, and operational processes to identify how the system supports daily business activities and to prepare for future development or enhancement tasks."
-    },
-    {
-      title: "Initial Familiarization with New Task and System Workflow",
-      date: "2026-06-16",
-      details: "Received a new task assignment and began reviewing the related system and operational requirements. Spent time exploring the system workflow, understanding the business processes involved, and familiarizing with the overall flow to gain sufficient knowledge before proceeding with the development and implementation work. Focused on learning the system structure, key functionalities, and data flow to ensure a better understanding of the assigned task."
-    },
-    {
-      title: "Logbook Development and Documentation Update",
-      date: "2026-06-17",
-      details: "Spent time updating and developing the project logbook due to the absence of new assigned tasks. Focused on organizing previous entries, refining documentation clarity, and ensuring all activities are properly recorded in a structured and professional format for project tracking and reporting purposes.."
-    },
-    {
-      title: "KPIV Data Analysis Using Descriptive Statistics and Boxplot",
-      date: "2026-06-18",
-      details: "Conducted an exploratory analysis of the KPIV dataset using descriptive statistical methods and boxplot visualization. Calculated key statistical measures such as mean, median, standard deviation, minimum, and maximum values to understand the data distribution and variability. Additionally, used boxplots to identify potential outliers, assess data spread, and evaluate the overall characteristics of the KPIV variables before proceeding with further predictive modeling analysis."
-    },
-    {
-      title: "KPIV Statistical Analysis and Exploration of Advanced Predictive Modeling Techniques",
-      date: "2026-06-19",
-      details: "Continued analyzing the KPIV dataset by performing Analysis of Variance (ANOVA) to evaluate whether there are significant differences in population means among the groups under study. The analysis aimed to identify KPIV variables that exhibit meaningful variation and may contribute to the predictive modeling process. In addition, explored advanced modeling approaches by studying the integration of Principal Component Analysis (PCA) with Support Vector Regression (SVR) and Gaussian Process Regression (GPR). Focused on understanding how PCA can be used for dimensionality reduction and feature extraction before applying SVR and GPR to improve model performance, reduce multicollinearity issues, and enhance prediction accuracy of the KPOV outputs."
-    },
-     {
-      title: "Rest day",
-      date: "2026-06-20",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-06-21",
-      type:"Rest day",
-      details: "Rest day."
-    },
-     {
-      title: "Research on PCA Preprocessing for Predictive Modeling",
-      date: "2026-06-22",
-      details: "Continued conducting research on the implementation of Principal Component Analysis (PCA) as a preprocessing step before predictive modeling. Focused on understanding the proper workflow of applying PCA to KPIV data, including data standardization, covariance structure analysis, and principal component selection. Also reviewed how PCA can help reduce dimensionality, remove multicollinearity, and improve the performance and stability of downstream models such as SVR and GPR for predicting KPOV outputs."
-    },
-     {
-      title: "Meeting on VCM Data Trend Review and Cpk Performance Analysis",
-      date: "2026-06-23",
-      details: "Participated in a meeting on the review of VCM data trends and Cpk performance. The discussion focused on evaluating process performance by analyzing historical data trends, reviewing process capability (Cpk) results, and identifying dimensions or parameters that require further attention. The meeting also covered possible improvement actions to enhance process stability, maintain product quality, and support continuous process improvement initiatives."
-    },
-      {
-      title: "Enhancement of PDF Checker System for Image-Based PDF Files",
-      date: "2026-06-24",
-      details: "Completed the development of an enhanced version of the PDF Checker System to support a different type of PDF document, specifically image-based (scanned) PDF files. Improved the system to accurately process and extract information from image-converted PDFs, increasing its compatibility with various supplier document formats and enhancing its overall reliability and usability for quality documentation purposes."
-    },
-     {
-      title: "Initiation of Predictive Modeling Analysis",
-      date: "2026-06-25",
-      details: "Started conducting predictive modeling analysis using the prepared KPIV and KPOV datasets. Focused on data preparation, model setup, and preliminary analysis to evaluate the relationship between input variables (KPIVs) and output variables (KPOVs). Began implementing the selected modeling approaches and assessing their suitability for predicting process performance and product quality outcomes."
-    },
-    {
-      title: "Continued Predictive Data Analysis",
-      date: "2026-06-26",
-      details: "Continued analyzing the predictive modeling data by evaluating the relationships between the selected KPIV and KPOV variables. Performed further data preprocessing, assessed model performance, and refined the analysis to improve prediction accuracy. Focused on interpreting the results and identifying areas for model optimization before proceeding with further validation and development."
-    },
-    {
-      title: "Rest day",
-      date: "2026-06-27",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-06-28",
-      type:"Rest day",
-      details: "Rest day."
-    },
-      {
-      title: "Continued Predictive Data Analysis and PDF Checker System Discussion Planning",
-      date: "2026-06-29",
-      details: "Continued analyzing the predictive modeling data by evaluating the performance of the selected models and interpreting the prediction results. Focused on refining the analysis, identifying opportunities for model improvement, and validating the relationship between the KPIV and KPOV variables. In addition, scheduled a discussion session with a colleague to review the enhanced version of the PDF Checker System, particularly the version designed to process image-based PDF files, in order to gather feedback and discuss possible improvements before deployment."
-    },
-      {
-      title: "PDF Checker System Demonstration and Production Performance Meeting",
-      date: "2026-06-30",
-      details: "Conducted a demonstration of the enhanced PDF Checker System (image-based PDF version) to the relevant departments. Presented the system workflow, explained its key features and improvements, and collected feedback from users for future enhancements. In addition, attended a meeting on the production performance of the product, where production results, process performance, and quality-related issues were reviewed to identify opportunities for process improvement and maintain consistent product quality."
-    },
-     {
-      title: "Investigation of Data Collection and Reporting Process",
-      date: "2026-07-01",
-      details: "Investigated the existing data collection and reporting workflow used in the quality control process. Observed that the QC team performs product measurements according to the Process Control Plan, and after that analyzes the measurement data to verify that the process is statistically in control and that all results meet the specification limits. Once the data is confirmed to be acceptable, the QC team manually transfers the measurement results into a standardized reporting template known as the FAIR (First Article Inspection Report). The investigation was conducted to gain a better understanding of the overall workflow and identify potential opportunities for process improvement and automation."
-    },
-    {
-      title: "Preparation of Process Flowchart for Digitalization Initiative",
-      date: "2026-07-02",
-      details: "Prepared a detailed flowchart illustrating the current data collection and reporting workflow for the quality inspection process. The flowchart documented the sequence of activities from QC measurements based on the Process Control Plan, data verification , and manual preparation of the FAIR (First Article Inspection Report). The flowchart was developed to support discussions during the AI and Digitalization initiative and to identify potential opportunities for process automation and workflow improvement."
-    },
-      {
-      title: "Participation in AI & Digitalization Sharing Session",
-      date: "2026-07-03",
-      details: "Participated in the AI & Digitize Sharing Session – MAT & MAM/MATC, a knowledge-sharing meeting involving the parent company (MAT) and its Malaysian subsidiaries (MAM and MATC). The session focused on the latest applications of artificial intelligence (AI) and digitalization initiatives in manufacturing and business operations. It provided insights into ongoing digital transformation projects, best practices, and potential opportunities to leverage AI and automation for improving operational efficiency, productivity, and process optimization across the organization."
-    },
-        {
-      title: "Rest day",
-      date: "2026-07-04",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-07-05",
-      type:"Rest day",
-      details: "Rest day."
-    },
-      {
-      title: "Result Interpretation for Predictive Modeling Report",
-      date: "2026-07-06",
-      details: "Started preparing the results interpretation section of the predictive modeling report. Focused on analyzing and explaining the performance of the developed predictive models by interpreting the evaluation metrics, prediction results, and relationships between the KPIV and KPOV variables. The objective was to provide a clear discussion of the findings and assess the effectiveness of the selected modeling approaches."
-    },
-    {
-     title: "Continued Interpretation of Predictive Modeling Results",
-      date: "2026-07-07",
-      details: "Continued preparing the results interpretation section of the predictive modeling report. Further analyzed the model outputs by interpreting the prediction performance, comparing the results of the selected modeling approaches, and discussing the significance of the findings. Refined the discussion to ensure the results were presented clearly and supported the objectives of the predictive modeling study."
-    },
-     {
-     title: "Development of Air Gap Calculator Website and Preparation of Meeting Minutes",
-      date: "2026-07-08",
-      details: "Developed an Air Gap Calculator website based on the predictive models that were previously developed to provide an easier and more user-friendly platform for predicting air gap values from the selected input parameters. In addition, prepared the meeting minutes for the AI & Digitize Sharing Session – MAT & MAM/MATC meeting, documenting the key discussions, ideas, and action items related to AI applications and digitalization initiatives within the organization.",
-    },
-     {
-     title: "Preparation of Presentation Slides for Predictive Modeling Analysis",
-      date: "2026-07-09",
-      details: "Prepared the presentation slides for the predictive modeling project by summarizing the project background, methodology, data analysis, model development process, and key findings. Organized the results and visualizations into a clear and structured presentation to effectively communicate the objectives, methodology, and performance of the predictive models to the intended audience.",
-    },
-     {
-     title: "Finalization of Presentation Slides for Predictive Modeling Analysis",
-      date: "2026-07-10",
-      details: "Finalized the presentation slides for the predictive modeling project by reviewing and refining the content, figures, and data visualizations. Ensured that the presentation clearly communicated the project background, methodology, model development process, key findings, and conclusions. Made final adjustments to improve the overall structure, clarity, and professionalism of the presentation before submission and presentation.",
-    },
-      {
-      title: "Rest day",
-      date: "2026-07-11",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-      title: "Rest day",
-      date: "2026-07-12",
-      type:"Rest day",
-      details: "Rest day."
-    },
-    {
-     title: "Assistance with Customer Audit Data Entry",
-      date: "2026-07-13",
-      details: "Assisted a colleague in preparing documents for a customer audit by performing data entry tasks. Transferred the required information from one Excel file to another, ensuring that the data was copied accurately and organized according to the required format to support the audit documentation process.",
-    },
-      {
-     title: "Continued Assistance with Customer Audit Data Entry",
-      date: "2026-07-14",
-      details: "Continued assisting a colleague with data entry activities for the customer audit. Transferred and verified the required information between Excel files, ensuring the data was accurately recorded and properly organized according to the audit requirements to support the completion of the audit documentation.",
-    },
-  ];
   function updateSummary() {
   document.getElementById("totalDays").innerText = events.length;
   document.getElementById("workDays").innerText =
@@ -1100,7 +546,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var monthSummaries = {
     "2026-04": "In April, I reported for duty and was briefed on the company's workflow and Statistical Process Control (SPC) basics, then shadowed quality control inspections and the Process Control Plan on the production lines. The bulk of the month was spent building an automated file checker system for OQA and Smartsheet reports — designing the validation logic, building a web interface, integrating it with a Flask backend, and debugging and documenting the system. I also performed SPC control chart calculations in Excel and presented the completed file checker project to the QE Director, after which I was assigned a new project on predictive modelling of KPIV/KPOV relationships for the VCM product.",
     "2026-05": "In May, I worked on collecting and matching KPIV and KPOV data for the predictive modelling project, then ran into weak correlations and statistical issues that required adjusting the datasets and exploring alternative modelling approaches (eventually settling on SVR and GPR). Midway through the month I was pulled onto an urgent PDF reader system to extract supplier material details for an upcoming customer audit, and was also assigned a new daily working record system, which I iteratively refined. Towards the end of the month I prepared a proposal for collecting better KPIV/KPOV data from multiple production lots, discussed it with the Quality Director and Quality Manager, and began writing the appendix and methodology sections of the predictive modelling report.",
-    "2026-06": "During June , I was involved in predictive modeling research, software system development, and quality assurance support. My main activities included developing the project methodology, analyzing KPIV data using statistical methods, exploring advanced predictive modeling techniques such as PCA, SVR, and GPR, and initiating the predictive analysis. I also enhanced the PDF Checker System by developing an image-based PDF version, preparing the user manual, conducting system demonstrations, and discussing improvements with relevant departments. In addition, I contributed to the development of internal company systems, attended meetings with the Quality, Production, and IT departments regarding project progress and data collection, and participated in production performance reviews. Overall, the activities throughout the month strengthened my technical knowledge, analytical skills, and understanding of software development and quality engineering in an industrial environment."
+    "2026-06": "During June, I was involved in predictive modeling research, software system development, and quality assurance support. My main activities included developing the project methodology, analyzing KPIV data using statistical methods, exploring advanced predictive modeling techniques such as PCA, SVR, and GPR, and initiating the predictive analysis. I also enhanced the PDF Checker System by developing an image-based PDF version, preparing the user manual, conducting system demonstrations, and discussing improvements with relevant departments. In addition, I contributed to the development of internal company systems, attended meetings with the Quality, Production, and IT departments regarding project progress and data collection, and participated in production performance reviews. Overall, the activities throughout the month strengthened my technical knowledge, analytical skills, and understanding of software development and quality engineering in an industrial environment.",
+    "2026-07": "TODO: write a summary for July before the month ends."
   };
 
   // Monthly summary: counts events whose date falls within the
@@ -1158,6 +605,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // Shared logic for picking a date, whether from clicking an empty
+  // day cell or clicking an event pill on top of it
+  function selectDate(dateStr) {
+    currentDate = new Date(dateStr + "T00:00:00");
+    selectedDateStr = dateStr;
+    localStorage.setItem('logbook_selectedDate', dateStr);
+    updateLog(dateStr);
+    calendar.gotoDate(dateStr);
+    calendar.render(); // reapply the selected-day highlight
+  }
+
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     initialDate: localStorage.getItem('logbook_currentMonth') || '2026-04-01',
@@ -1193,26 +651,12 @@ document.addEventListener('DOMContentLoaded', function () {
     },
 
     dateClick: function(info) {
-   currentDate = new Date(info.dateStr);
-  selectedDateStr = info.dateStr;
-  updateLog(info.dateStr);
-  calendar.refetchEvents(); // optional
-  calendar.render(); // refresh to apply highlight
-  localStorage.setItem('logbook_selectedDate', info.dateStr);
-},
-  eventClick: function(info) {
-    info.jsEvent.preventDefault(); // prevent default popup
-    let dateStr = info.event.startStr;
-    localStorage.setItem('logbook_selectedDate', dateStr);
-    
-
-    currentDate = new Date(dateStr);
-    selectedDateStr = dateStr;
-
-    updateLog(dateStr);
-    calendar.gotoDate(dateStr);
-    calendar.render();
-  },
+      selectDate(info.dateStr);
+    },
+    eventClick: function(info) {
+      info.jsEvent.preventDefault(); // prevent default popup
+      selectDate(info.event.startStr);
+    },
 
 
 dayCellClassNames: function(arg) {
@@ -1287,4 +731,3 @@ if (selectedDateStr) {
 </footer>
 </body>
 </html>
-
