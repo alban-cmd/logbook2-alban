@@ -449,6 +449,126 @@ body.dark-mode .banner-item:hover .banner-text h3 {
   transition: color 0.3s ease;
 }
 
+/* ===== "Click to learn more" hint on each banner item ===== */
+.banner-item {
+  cursor: pointer;
+}
+
+.click-hint {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #007BFF;
+}
+
+body.dark-mode .click-hint {
+  color: #90caf9;
+}
+
+/* ===== MODAL POPUP ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  background: white;
+  color: #111;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+body.dark-mode .modal-box {
+  background: #2b2b2b;
+  color: #e0e0e0;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-close:hover { color: #111; }
+body.dark-mode .modal-close { color: #ccc; }
+body.dark-mode .modal-close:hover { color: white; }
+
+.modal-box h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  padding-right: 30px;
+}
+
+.modal-box p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.modal-image-wrap {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #eee;
+}
+
+body.dark-mode .modal-image-wrap { background: #3a3a3a; }
+
+.modal-image-wrap img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 280px;
+}
+
+.modal-image-placeholder {
+  width: 100%;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 14px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
+}
+
+body.dark-mode .modal-image-placeholder {
+  border-color: #555;
+  color: #888;
+}
+
+@media (max-width: 480px) {
+  .modal-box { padding: 24px 20px; }
+  .modal-box h3 { font-size: 20px; }
+}
+
   </style>
 </head>
 
@@ -519,49 +639,64 @@ body.dark-mode .banner-item:hover .banner-text h3 {
 
   <div class="banner-list">
 
-   <div class="banner-item">
+   <div class="banner-item" onclick="openModal('spc')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('spc');}">
   <img src="images/spc.jpg">
   <div class="banner-text">
     <h3>Statistical Process Control (SPC)</h3>
     <p>Monitor and control production processes using statistical data to detect variations and ensure consistent quality output.</p>
+    <span class="click-hint">Click to learn more →</span>
   </div>
 </div>
 
-<div class="banner-item reverse">
+<div class="banner-item reverse" onclick="openModal('controlchart')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('controlchart');}">
   <img src="images/control chart.png">
   <div class="banner-text">
     <h3>Control Chart</h3>
     <p>Track UCL, LCL, and CL to identify process variation and ensure stability across the production line.</p>
+    <span class="click-hint">Click to learn more →</span>
   </div>
 </div>
 
-<div class="banner-item">
+<div class="banner-item" onclick="openModal('webdev')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('webdev');}">
   <img src="images/website development.jpg">
   <div class="banner-text">
     <h3>Website Development</h3>
     <p>Design and build internal web-based tools — from a logbook system to automated report checkers — using HTML, CSS, JavaScript for the frontend and Python (Flask) for backend coding.</p>
+    <span class="click-hint">Click to learn more →</span>
   </div>
 </div>
 
-<div class="banner-item reverse">
+<div class="banner-item reverse" onclick="openModal('predictive')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('predictive');}">
   <img src="images/predictive modeling.jpg">
   <div class="banner-text">
     <h3>Predictive Modeling</h3>
     <p>Apply machine learning techniques such as SVR and GPR to predict key process output variables (KPOV) from input variables (KPIV), supporting proactive quality control.</p>
+    <span class="click-hint">Click to learn more →</span>
   </div>
 </div>
 
-<div class="banner-item">
+<div class="banner-item" onclick="openModal('communication')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('communication');}">
   <img src="images/communication.jpg">
   <div class="banner-text">
     <h3>Communication</h3>
     <p>Present project findings, progress updates, and technical results clearly to supervisors, managers, and the QE Director through meetings and reports.</p>
+    <span class="click-hint">Click to learn more →</span>
   </div>
 </div>
 
    
 </div>
 </section>
+
+<!-- ===== MODAL POPUP (shared by all 5 items) ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal();">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div class="modal-image-wrap" id="modalImageWrap"></div>
+    <h3 id="modalTitle"></h3>
+    <div id="modalText"></div>
+  </div>
+</div>
 <footer class="site-footer">
   <p><strong>Alban Heng Yu Cheng</strong> — QE Internship Logbook</p>
   <p>Min Aik Technology Sdn. Bhd. &nbsp;|&nbsp; April 2026 – July 2026</p>
@@ -589,6 +724,91 @@ body.dark-mode .banner-item:hover .banner-text h3 {
   }, { threshold: 0.15 });
 
   banners.forEach(banner => observer.observe(banner));
+</script>
+
+<script>
+  // Content for each "What I Learned" modal.
+  // image: the file this modal will try to load — drop a photo with this
+  // exact filename into the /images folder later and it'll appear automatically.
+  // If the file isn't there yet, a placeholder box is shown instead.
+  const modalContent = {
+    spc: {
+      title: "Statistical Process Control (SPC)",
+      image: "images/learn-spc.jpg",
+      paragraphs: [
+        "During my internship, I mostly learned about SPC by observing — sitting in on meetings where the team reviewed production data and discussed what it meant.",
+        "What I learned wasn't how to run SPC myself, but how engineers actually use the data to make decisions — spotting a process starting to drift before it turns into a real defect, rather than just reacting after something goes wrong.",
+        "This gave me a much better sense of how SPC works in real life, compared to only reading about it in theory."
+      ]
+    },
+    controlchart: {
+      title: "Control Chart & Cpk",
+      image: "images/learn-controlchart.jpg",
+      paragraphs: [
+        "During my internship, I built systems that automatically calculate and display control charts — including Cpk, a number that tells you how capable a process is of staying within quality limits, not just whether it's currently in control.",
+        "I coded the actual calculation myself, based on the mean and variation of the inspection data, rather than just displaying numbers that were already calculated elsewhere. A higher Cpk means the process has more \"buffer room\" before it risks producing defective parts, while a low Cpk means it's cutting it close to the limits even if nothing has gone wrong yet.",
+        "This calculation now runs automatically inside the systems I built (Asec QIR and the Gasket IQC system), so instead of someone manually computing Cpk in Excel after every batch of measurements, the number appears instantly whenever a report is generated."
+      ]
+    },
+    webdev: {
+      title: "Website Development",
+      image: "images/learn-webdev.jpg",
+      paragraphs: [
+        "I designed and built several internal tools to help the company work faster and reduce manual, repetitive tasks — including a system that automatically checks inspection reports, a system that matches invoices to reports, and this logbook website itself.",
+        "I used HTML, CSS, and JavaScript to build what people actually see and click on, and Python (Flask and FastAPI) to handle the data and logic working behind the scenes.",
+        "Building these systems taught me how to take a real, slow, manual task and turn it into something automated and reliable."
+      ]
+    },
+    predictive: {
+      title: "Predictive Modeling",
+      image: "images/learn-predictive.jpg",
+      paragraphs: [
+        "For my thesis project, I worked on predicting a key quality measurement (called \"air gap\") before it's even produced, using other measurements taken earlier in the process.",
+        "I used statistical and machine learning methods (SVR and GPR) to build models that could make these predictions from a small set of real production data.",
+        "One interesting finding was that a simpler model actually performed better than more complex ones — a good reminder that more complicated doesn't always mean more accurate. This project let me connect my math background to a real quality engineering problem."
+      ]
+    },
+    communication: {
+      title: "Communication",
+      image: "images/learn-communication.jpg",
+      paragraphs: [
+        "Throughout the internship, I regularly presented my project progress and findings to my supervisors and the QE Director.",
+        "This included explaining technical topics — like my predictive modeling results — in a way that made sense to people who don't work with statistics every day.",
+        "I learned that good communication isn't about using technical terms — it's about making sure the other person actually understands what the results mean and why they matter."
+      ]
+    }
+  };
+
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalImageWrap = document.getElementById('modalImageWrap');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalText = document.getElementById('modalText');
+
+  function openModal(key) {
+    const data = modalContent[key];
+    if (!data) return;
+
+    modalTitle.textContent = data.title;
+    modalText.innerHTML = data.paragraphs.map(p => `<p>${p}</p>`).join('');
+
+    // Try to load the real image; if it's not there yet, show a placeholder
+    modalImageWrap.innerHTML = `<img src="${data.image}" alt="${data.title}"
+      onerror="this.closest('.modal-image-wrap').innerHTML='<div class=&quot;modal-image-placeholder&quot;>📷 Image coming soon — add ${data.image} to the images folder</div>'">`;
+
+    modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+      closeModal();
+    }
+  });
 </script>
 </body>
 </html>
