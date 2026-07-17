@@ -566,5 +566,22 @@
     "title": "Design of Air Gap Calculator Based on Predictive Modeling Thesis",
     "date": "2026-07-16",
     "details": "Designed the user interface and workflow of the Air Gap Calculator based on the predictive models developed in my thesis. Planned the system layout, input parameters, and output presentation to ensure the calculator is user-friendly and capable of providing air gap predictions efficiently. The design aimed to translate the predictive modeling results into a practical web-based application that can support users in estimating air gap values using the developed models."
+  },
+  {
+    "title": "Continued Design and Development of Air Gap Calculator",
+    "date": "2026-07-17",
+    "details": "Continued designing and refining the Air Gap Calculator based on the predictive modeling results developed in my thesis. Improved the website layout, user interface, and input/output workflow to enhance usability and ensure that the calculator can effectively present prediction results in a clear, accurate, and user-friendly manner. The design focused on creating a practical tool that facilitates air gap prediction for engineering applications."
+  },
+   {
+    "title": "Rest day",
+    "date": "2026-07-18",
+    "type": "Rest day",
+    "details": "Rest day."
+  },
+  {
+    "title": "Rest day",
+    "date": "2026-07-19",
+    "type": "Rest day",
+    "details": "Rest day."
   }
 ]
