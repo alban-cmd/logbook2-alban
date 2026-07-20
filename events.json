@@ -583,5 +583,10 @@
     "date": "2026-07-19",
     "type": "Rest day",
     "details": "Rest day."
+  }, 
+  {
+    "title": "Development of Image-Based PDF Reader System for Supplier Documents",
+    "date": "2026-07-20",
+    "details": "Started working on a new system development task, which is an enhanced version of the previously developed image-based PDF Reader System. The new system is designed to extract and process information from various supplier documents, including Delivery Orders (DO), Mill Certificates, Inspection Reports, and Surface Glossiness Test Reports. Began reviewing the document formats and identifying the key information required for extraction to support automated data processing and improve the efficiency of supplier document management."
   }
 ]
