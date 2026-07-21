@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Me</title>
   <meta name="description" content="About Alban Heng Yu Cheng, final-year Business Mathematics student at Universiti Utara Malaysia and Quality Engineering intern at Min Aik Technology Sdn. Bhd.">
-  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="icon" type="image/png" href="images/logo_oval_tight.png">
   <style>
     @keyframes fadeInUp {
   from {
@@ -34,10 +34,48 @@
       top: 0;
       z-index: 100;
     }
-    .logo {
-      height: 50px;
-      animation:fadeInUp 1s ease forwards;
-    }
+    .logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.logo-emblem { height: 65px; width: auto; }
+
+.logo-text { display: flex; flex-direction: column; }
+
+.logo-my-line1,
+.logo-my-line2 {
+  display: block;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1.1;
+  color: #111;
+}
+
+.logo-en {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: #333;
+  margin-top: 1px;
+  line-height: 1.2;
+}
+
+.logo-divider {
+  border: none;
+  border-top: 1.5px solid #003399;
+  margin: 3px 0;
+  width: 100%;
+}
+
+.logo-uum {
+  font-size: 10px;
+  font-weight: 700;
+  color: #003399;
+}
     .menu-toggle {
       display: none;
       background: none;
@@ -84,7 +122,14 @@ body.dark-mode nav ul a { color: #e0e0e0; }
 body.dark-mode nav ul a:hover { background: #444; color: white; }
 body.dark-mode nav ul a.active { background: #444; color: white; }
 body.dark-mode nav { background: #1e1e1e; }
+body.dark-mode .logo-my-line1,
+body.dark-mode .logo-my-line2 { color: #f0f0f0; }
 
+body.dark-mode .logo-en { color: #cfcfcf; }
+
+body.dark-mode .logo-divider { border-top-color: #6699ff; }
+
+body.dark-mode .logo-uum { color: #90caf9; }
 body.dark-mode .dark-toggle {
   border-color: #555;
   color: #e0e0e0;
@@ -375,7 +420,7 @@ body.dark-mode .site-footer { background: #000; }
 
     @media (max-width: 480px) {
       header { padding: 14px 16px; }
-      .logo { height: 40px; }
+      .logo-emblem { height: 50px; }
       .about-section { margin: 16px; padding: 18px; }
       .about-section h1 { font-size: 22px; }
       .about-section p { font-size: 15px; }
@@ -384,7 +429,18 @@ body.dark-mode .site-footer { background: #000; }
 </head>
 <body>
   <header>
-    <img src="images/logo.jpg" alt="Logo" class="logo" />
+  <a href="index.html" class="logo-lockup">
+    <img src="images/logo_oval_tight.png" class="logo-emblem" alt="UUM Emblem">
+    <div class="logo-text">
+      <div class="logo-my">
+        <span class="logo-my-line1">Pusat Pengajian Sains</span>
+        <span class="logo-my-line2">Kuantitatif</span>
+      </div>
+      <div class="logo-en">SCHOOL OF QUANTITATIVE<br>SCIENCES (SQS)</div>
+      <hr class="logo-divider">
+      <div class="logo-uum">Universiti Utara Malaysia</div>
+    </div>
+</a>
     <div class="header-right">
     <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
     <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
