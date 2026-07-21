@@ -588,5 +588,10 @@
     "title": "Development of Image-Based PDF Reader System for Supplier Documents",
     "date": "2026-07-20",
     "details": "Started working on a new system development task, which is an enhanced version of the previously developed image-based PDF Reader System. The new system is designed to extract and process information from various supplier documents, including Delivery Orders (DO), Mill Certificates, Inspection Reports, and Surface Glossiness Test Reports. Began reviewing the document formats and identifying the key information required for extraction to support automated data processing and improve the efficiency of supplier document management."
+  },
+  {
+    "title": "Development of Website Interface for Supplier Document Processing System",
+    "date": "2026-07-21",
+    "details": "Continued the development of the new supplier document processing system by designing and developing its website interface. Focused on creating a user-friendly layout for uploading image-based PDF files, displaying extracted information, and providing an intuitive workflow for processing supplier documents such as Delivery Orders (DO), Mill Certificates, Inspection Reports, and Surface Glossiness Test Reports. The interface was designed to improve usability and support efficient document management."
   }
 ]
