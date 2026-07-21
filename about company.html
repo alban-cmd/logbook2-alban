@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Company</title>
   <meta name="description" content="About Min Aik Technology (M) Sdn. Bhd., a precision manufacturing and contract engineering company in Alor Gajah, Melaka.">
-  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="icon" type="image/png" href="images/logo_oval_tight.jpg">
   <style>
     @keyframes fadeInUp {
   from {
@@ -39,10 +39,48 @@
       z-index: 100;
     }
 
-    .logo {
-      height: 50px;
-      animation:fadeInUp 1s ease forwards;
-    }
+    .logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.logo-emblem { height: 65px; width: auto; }
+
+.logo-text { display: flex; flex-direction: column; }
+
+.logo-my-line1,
+.logo-my-line2 {
+  display: block;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1.1;
+  color: #111;
+}
+
+.logo-en {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: #333;
+  margin-top: 1px;
+  line-height: 1.2;
+}
+
+.logo-divider {
+  border: none;
+  border-top: 1.5px solid #003399;
+  margin: 3px 0;
+  width: 100%;
+}
+
+.logo-uum {
+  font-size: 10px;
+  font-weight: 700;
+  color: #003399;
+}
 
     .menu-toggle {
       display: none;
@@ -83,7 +121,14 @@ body.dark-mode {
   background-repeat: no-repeat;
   color: #e0e0e0;
 }
+body.dark-mode .logo-my-line1,
+body.dark-mode .logo-my-line2 { color: #f0f0f0; }
 
+body.dark-mode .logo-en { color: #cfcfcf; }
+
+body.dark-mode .logo-divider { border-top-color: #6699ff; }
+
+body.dark-mode .logo-uum { color: #90caf9; }
 body.dark-mode header {
   background: #1e1e1e;
   box-shadow: 0 2px 6px rgba(0,0,0,0.4);
@@ -313,7 +358,7 @@ body.dark-mode .site-footer { background: #000; }
 
 @media (max-width: 480px) {
   header { padding: 14px 16px; }
-  .logo { height: 40px; }
+  .logo-emblem { height: 50px; }
   .about-section { margin: 16px; padding: 18px; }
   .about-section h1 { font-size: 20px; }
   .about-section h2 { font-size: 18px; }
