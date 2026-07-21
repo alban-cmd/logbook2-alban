@@ -31,6 +31,47 @@ body {
 }
 
 .logo { height: 50px; }
+  .logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 4px;               /* was 12px */
+  animation: fadeInUp 1s ease forwards;
+}
+
+.logo-emblem { height: 40px; width: auto; }   /* was 55px */
+
+.logo-text { display: flex; flex-direction: column; }
+
+.logo-my-line1,
+.logo-my-line2 {
+  display: block;
+  font-weight: 700;
+  font-size: 11px;        /* was 15px */
+  line-height: 1.1;
+  color: #111;
+}
+
+.logo-en {
+  font-size: 8px;          /* was 10.5px */
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: #333;
+  margin-top: 1px;
+  line-height: 1.2;
+}
+
+.logo-divider {
+  border: none;
+  border-top: 1.5px solid #003399;   /* thinner */
+  margin: 3px 0;
+  width: 100%;
+}
+
+.logo-uum {
+  font-size: 10px;        /* was 14px */
+  font-weight: 700;
+  color: #003399;
+}
 
 .menu-toggle {
   display: none;
@@ -467,7 +508,10 @@ h2 {
 @media (max-width: 480px) {
   .site-header { padding: 14px 16px; }
   .logo { height: 40px; }
-
+  .logo-emblem { height: 30px; }
+  .logo-my-line1, .logo-my-line2 { font-size: 9px; }
+  .logo-en { font-size: 7px; }
+  .logo-uum { font-size: 9px; }
   .summary-card { width: 100%; }
 
   .fc .fc-toolbar-title { font-size: 14px; }
@@ -542,7 +586,18 @@ h2 {
 <body>
 
 <header class="site-header">
-  <img src="images/logo.jpg" class="logo">
+  <div class="logo-lockup">
+  <img src="images/logo_oval_tight.png" class="logo-emblem" alt="UUM Emblem">
+  <div class="logo-text">
+    <div class="logo-my">
+      <span class="logo-my-line1">Pusat Pengajian Sains</span>
+      <span class="logo-my-line2">Kuantitatif</span>
+    </div>
+    <div class="logo-en">SCHOOL OF QUANTITATIVE<br>SCIENCES (SQS)</div>
+    <hr class="logo-divider">
+    <div class="logo-uum">Universiti Utara Malaysia</div>
+  </div>
+</div>
   <div class="header-right">
     <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
     <button class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
