@@ -593,5 +593,10 @@
     "title": "Development of Website Interface for Supplier Document Processing System",
     "date": "2026-07-21",
     "details": "Continued the development of the new supplier document processing system by designing and developing its website interface. Focused on creating a user-friendly layout for uploading image-based PDF files, displaying extracted information, and providing an intuitive workflow for processing supplier documents such as Delivery Orders (DO), Mill Certificates, Inspection Reports, and Surface Glossiness Test Reports. The interface was designed to improve usability and support efficient document management."
+  },
+    {
+    "title": "Backend Development for Supplier Document Processing System",
+    "date": "2026-07-22",
+    "details": "Started developing the backend of the Supplier Document Processing System. Focused on implementing the core functionality for processing uploaded supplier documents, handling data extraction workflows, and integrating the backend logic with the website interface. The development aimed to ensure efficient processing of image-based PDF files and accurate extraction of information from documents such as Delivery Orders (DO), Mill Certificates, Inspection Reports, and Surface Glossiness Test Reports."
   }
 ]
