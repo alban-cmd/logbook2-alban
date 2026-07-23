@@ -598,5 +598,10 @@
     "title": "Backend Development for Supplier Document Processing System",
     "date": "2026-07-22",
     "details": "Started developing the backend of the Supplier Document Processing System. Focused on implementing the core functionality for processing uploaded supplier documents, handling data extraction workflows, and integrating the backend logic with the website interface. The development aimed to ensure efficient processing of image-based PDF files and accurate extraction of information from documents such as Delivery Orders (DO), Mill Certificates, Inspection Reports, and Surface Glossiness Test Reports."
+  },
+   {
+    "title": "Participation in Company Health and Wellness Campaign",
+    "date": "2026-07-23",
+    "details": "Participated in the company-organized Health and Wellness Campaign, which aimed to promote employee health awareness and well-being. The activities included blood donation, basic health screening, eye examination, and dental check-up. The program provided employees with an opportunity to monitor their health condition while encouraging a healthy lifestyle and social responsibility through voluntary blood donation."
   }
 ]
