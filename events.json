@@ -603,5 +603,22 @@
     "title": "Participation in Company Health and Wellness Campaign",
     "date": "2026-07-23",
     "details": "Participated in the company-organized Health and Wellness Campaign, which aimed to promote employee health awareness and well-being. The activities included blood donation, basic health screening, eye examination, and dental check-up. The program provided employees with an opportunity to monitor their health condition while encouraging a healthy lifestyle and social responsibility through voluntary blood donation."
+  },
+     {
+    "title": "Continued Backend Development for Supplier Document Processing System",
+    "date": "2026-07-24",
+    "details": "Continued developing the backend functionality of the Supplier Document Processing System. Focused on enhancing the document processing workflow, improving data extraction logic, and integrating backend components with the website interface. Conducted testing and refinement to ensure accurate processing of image-based PDF files and reliable extraction of information from supplier documents such as Delivery Orders (DO), Mill Certificates, Inspection Reports, and Surface Glossiness Test Reports."     
+  },
+     {
+    "title": "Rest day",
+    "date": "2026-07-25",
+    "type": "Rest day",
+    "details": "Rest day."
+  },
+  {
+    "title": "Rest day",
+    "date": "2026-07-26",
+    "type": "Rest day",
+    "details": "Rest day."
   }
 ]
