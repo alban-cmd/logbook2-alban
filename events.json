@@ -635,5 +635,10 @@
     "title": "Continued Data Entry and Documentation Support",
     "date": "2026-07-29",
     "details": "Continued performing data entry tasks by transferring and updating the required information into the designated system and documents. Verified the accuracy and consistency of the entered data while ensuring that all records were properly organized and complied with the required documentation standards to support daily operational activities."     
+  },
+  {
+    "title": "Data Adjustment for Process Capability Analysis",
+    "date": "2026-07-30",
+    "details": "Performed data adjustment and preprocessing to prepare the dataset for process capability (Cpk) analysis. Reviewed and refined the data to ensure it met the required conditions for evaluation and testing, with the objective of assessing process capability and supporting further analysis and model validation."     
   }
 ]
